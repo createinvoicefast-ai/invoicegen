@@ -232,6 +232,64 @@
     }
   };
 
+  const downloadInvoicePDF = async (draft) => {
+    const preview = $('[data-invoice-preview]');
+    if (!preview) return;
+    if (!window.html2canvas) {
+      notify('PDF unavailable', 'Export library did not load. Refresh and try again.');
+      return;
+    }
+
+    const jsPDF = window.jspdf?.jsPDF;
+    if (!jsPDF) {
+      notify('PDF unavailable', 'PDF library did not load. Refresh and try again.');
+      return;
+    }
+
+    try {
+      if (document.fonts?.ready) await document.fonts.ready;
+
+      const canvas = await window.html2canvas(preview, {
+        backgroundColor: '#ffffff',
+        scale: 2,
+        useCORS: true,
+        scrollY: -window.scrollY
+      });
+
+      if (!canvas.width || !canvas.height) {
+        notify('PDF unavailable', 'Preview area is empty. Fill invoice data and try again.');
+        return;
+      }
+
+      const imageData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4', compress: true });
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const margin = 8;
+      const printableWidth = pageWidth - (margin * 2);
+      const printableHeight = pageHeight - (margin * 2);
+      const imageHeight = (canvas.height * printableWidth) / canvas.width;
+
+      let heightLeft = imageHeight;
+      let offsetY = margin;
+
+      pdf.addImage(imageData, 'PNG', margin, offsetY, printableWidth, imageHeight, undefined, 'FAST');
+      heightLeft -= printableHeight;
+
+      while (heightLeft > 0.1) {
+        offsetY = margin - (imageHeight - heightLeft);
+        pdf.addPage();
+        pdf.addImage(imageData, 'PNG', margin, offsetY, printableWidth, imageHeight, undefined, 'FAST');
+        heightLeft -= printableHeight;
+      }
+
+      pdf.save(`${invoiceFileStem(draft)}.pdf`);
+      notify('Download ready', 'Invoice PDF file exported.');
+    } catch {
+      notify('PDF unavailable', 'Could not generate PDF. Please refresh and retry.');
+    }
+  };
+
   const setInvoicePrintScale = () => {
     const preview = $('[data-invoice-preview]');
     if (!preview) return;
@@ -924,7 +982,7 @@
     });
 
     $('[data-save-invoice]')?.addEventListener('click', async () => saveInvoiceToSupabase());
-    $('[data-download-pdf]')?.addEventListener('click', () => printInvoice());
+    $('[data-download-pdf]')?.addEventListener('click', async () => downloadInvoicePDF(draft));
     $('[data-download-print]')?.addEventListener('click', () => printInvoice());
     $('[data-download-json]')?.addEventListener('click', () => downloadInvoiceJSON(draft));
     $('[data-download-csv]')?.addEventListener('click', () => downloadInvoiceCSV(draft));

@@ -10,6 +10,7 @@
   <link rel="icon" href="/assets/img/createinvoicefast-logo.svg" type="image/svg+xml">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js" defer></script>
   <script src="/assets/js/supabase-config.js" defer></script>
   <script src="/assets/js/data.js" defer></script>
   <script src="/assets/js/site-supabase.js" defer></script>
@@ -42,11 +43,7 @@
     <main>
       <section class="section invoice-stage">
         <div class="invoice-stage-layout">
-          <aside class="ad-slot ad-slot-vertical no-print" data-ad-slot="left" aria-label="Left ad placement">
-            <p class="ad-slot-kicker">Left Sidebar</p>
-            <strong>300 x 600</strong>
-            <p>Add ad script, image, or iframe for your client campaigns.</p>
-          </aside>
+          <aside class="ad-slot ad-slot-vertical no-print" data-ad-slot="left" aria-label="Ad space"></aside>
 
           <div class="container invoice-stage-core">
             <div class="section-title">
@@ -222,19 +219,11 @@
             </div>
           </div>
 
-          <aside class="ad-slot ad-slot-vertical no-print" data-ad-slot="right" aria-label="Right ad placement">
-            <p class="ad-slot-kicker">Right Sidebar</p>
-            <strong>300 x 600</strong>
-            <p>Use this slot for sponsor banners, Adsense blocks, or affiliate ads.</p>
-          </aside>
+          <aside class="ad-slot ad-slot-vertical no-print" data-ad-slot="right" aria-label="Ad space"></aside>
         </div>
 
         <div class="container no-print">
-          <div class="ad-slot ad-slot-banner" data-ad-slot="bottom" aria-label="Bottom ad placement">
-            <p class="ad-slot-kicker">Bottom Banner</p>
-            <strong>970 x 90</strong>
-            <p>Optional horizontal ad placement under the invoice editor.</p>
-          </div>
+          <div class="ad-slot ad-slot-banner" data-ad-slot="bottom" aria-label="Ad space"></div>
         </div>
       </section>
     </main>

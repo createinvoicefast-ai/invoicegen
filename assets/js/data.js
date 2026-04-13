@@ -124,7 +124,7 @@ window.APP_DATA = {
     },
     {
       question: 'How are PDFs created?',
-      answer: 'The invoice page uses a print-optimized layout, so users can save a clean PDF directly from the browser dialog.'
+      answer: 'The invoice page renders the invoice preview and downloads it as a direct PDF file, so ads and browser print headers are not included.'
     }
   ],
   blogPosts: [
