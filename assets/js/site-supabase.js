@@ -147,7 +147,12 @@
   const applyTheme = (theme) => {
     document.documentElement.dataset.theme = theme;
     const toggle = $('[data-theme-toggle]');
-    if (toggle) toggle.setAttribute('aria-label', `Theme: ${theme}`);
+    if (toggle) {
+      const nextTheme = theme === 'dark' ? 'light' : 'dark';
+      toggle.textContent = theme === 'dark' ? '☀' : '☾';
+      toggle.setAttribute('aria-label', `Switch to ${nextTheme} mode`);
+      toggle.setAttribute('title', `Switch to ${nextTheme} mode`);
+    }
   };
 
   const setTheme = (value, persist = true) => {
@@ -198,7 +203,7 @@
         themeBtn.className = 'icon-btn';
         themeBtn.type = 'button';
         themeBtn.dataset.themeToggle = '';
-        themeBtn.textContent = '☼';
+        themeBtn.textContent = '☾';
         themeBtn.setAttribute('aria-label', 'Toggle theme');
         actions.prepend(themeBtn);
       }
@@ -346,6 +351,138 @@
 
   const getPrintableNode = () => $('[data-invoice-preview]') || $('[data-invoice-form]');
 
+  const buildPdfCaptureNode = (draft) => {
+    const totals = getInvoiceTotals(draft);
+    const taxRate = Number(draft.taxRate || 0);
+    const taxRateText = String(taxRate).replace(/\.0+$/, '').replace(/(\.\d*?)0+$/, '$1') || '0';
+
+    const safeText = (value, fallback = '-') => {
+      const clean = String(value ?? '').trim();
+      return clean ? escapeHTML(clean).replaceAll('\n', '<br>') : fallback;
+    };
+
+    const companyLines = [draft.companyName, draft.companyEmail, draft.companyAddress]
+      .map((entry) => String(entry || '').trim())
+      .filter(Boolean)
+      .map((entry) => escapeHTML(entry));
+
+    const billToLines = [draft.clientName, draft.clientEmail, draft.clientAddress]
+      .map((entry) => String(entry || '').trim())
+      .filter(Boolean)
+      .map((entry) => escapeHTML(entry));
+
+    const items = Array.isArray(draft.items) && draft.items.length
+      ? draft.items
+      : [{ description: 'Item', quantity: 1, rate: 0 }];
+
+    const maxPdfRows = 7;
+    const visibleItems = items.slice(0, maxPdfRows);
+
+    const rowsMarkup = visibleItems.map((item) => {
+      const quantity = Number(item.quantity || 0);
+      const rate = Number(item.rate || 0);
+      const amount = quantity * rate;
+
+      return `
+        <tr>
+          <td>${safeText(item.description, 'Item')}</td>
+          <td class="ig-pdf-num">${escapeHTML(String(quantity))}</td>
+          <td class="ig-pdf-num">${money(rate, draft.currency)}</td>
+          <td class="ig-pdf-num">${money(amount, draft.currency)}</td>
+        </tr>
+      `;
+    }).join('');
+
+    const overflowRow = items.length > maxPdfRows
+      ? `<tr><td colspan="4" class="ig-pdf-overflow">${escapeHTML(String(items.length - maxPdfRows))} more item(s) not shown in this one-page PDF.</td></tr>`
+      : '';
+
+    const logoSrc = typeof draft.logoDataUrl === 'string' && draft.logoDataUrl.startsWith('data:image/')
+      ? draft.logoDataUrl
+      : '';
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'ig-pdf-capture-wrap';
+    wrapper.setAttribute('aria-hidden', 'true');
+
+    const page = document.createElement('article');
+    page.className = 'ig-pdf-page';
+    page.innerHTML = `
+      <header class="ig-pdf-head">
+        <div class="ig-pdf-brand-col">
+          <div class="ig-pdf-logo">
+            ${logoSrc
+              ? `<img src="${logoSrc}" alt="Company logo">`
+              : '<span>+ Add Logo</span>'}
+          </div>
+          <p class="ig-pdf-company">${companyLines.join('<br>') || '&nbsp;'}</p>
+        </div>
+        <div class="ig-pdf-doc-col">
+          <h1>INVOICE</h1>
+          <p class="ig-pdf-doc-number"># ${safeText(draft.invoiceNumber, '1')}</p>
+          <dl class="ig-pdf-meta">
+            <div><dt>Date</dt><dd>${safeText(dateFormat(draft.issueDate), '-')}</dd></div>
+            <div><dt>Payment Terms</dt><dd>${safeText(draft.paymentTerms, '-')}</dd></div>
+            <div><dt>Due Date</dt><dd>${safeText(dateFormat(draft.dueDate), '-')}</dd></div>
+            <div><dt>PO Number</dt><dd>${safeText(draft.poNumber, '-')}</dd></div>
+          </dl>
+        </div>
+      </header>
+
+      <section class="ig-pdf-party-grid">
+        <div>
+          <h2>BILL TO</h2>
+          <p>${billToLines.join('<br>') || '&nbsp;'}</p>
+        </div>
+        <div>
+          <h2>SHIP TO</h2>
+          <p>${safeText(draft.shipTo, '&nbsp;')}</p>
+        </div>
+      </section>
+
+      <table class="ig-pdf-table" aria-label="Invoice line items">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>${rowsMarkup}${overflowRow}</tbody>
+      </table>
+
+      <section class="ig-pdf-bottom">
+        <div class="ig-pdf-notes-col">
+          <div class="ig-pdf-note-block">
+            <h3>Notes</h3>
+            <p>${safeText(draft.notes, '&nbsp;')}</p>
+          </div>
+          <div class="ig-pdf-note-block">
+            <h3>Terms</h3>
+            <p>${safeText(draft.terms, '&nbsp;')}</p>
+          </div>
+          <div class="ig-pdf-note-block ig-pdf-note-compact">
+            <h3>Shipping</h3>
+            <p>${money(totals.shipping, draft.currency)}</p>
+          </div>
+        </div>
+        <div class="ig-pdf-summary-col">
+          <div class="ig-pdf-summary-row"><span>Subtotal</span><strong>${money(totals.subtotal, draft.currency)}</strong></div>
+          <div class="ig-pdf-summary-row"><span>Tax (${escapeHTML(taxRateText)}%)</span><strong>${money(totals.tax, draft.currency)}</strong></div>
+          <div class="ig-pdf-summary-row ig-pdf-summary-total"><span>Total</span><strong>${money(totals.total, draft.currency)}</strong></div>
+          <div class="ig-pdf-summary-row"><span>Amount Paid</span><strong>${money(totals.amountPaid, draft.currency)}</strong></div>
+          <div class="ig-pdf-summary-row ig-pdf-balance-row"><span>Balance Due</span><strong>${money(totals.balanceDue, draft.currency)}</strong></div>
+        </div>
+      </section>
+    `;
+
+    wrapper.appendChild(page);
+    document.body.appendChild(wrapper);
+
+    return { wrapper, page };
+  };
+
   const downloadInvoiceJSON = (draft) => {
     const totals = getInvoiceTotals(draft);
     const payload = { ...draft, totals };
@@ -402,9 +539,6 @@
   };
 
   const downloadInvoicePDF = async (draft) => {
-    const preview = getPrintableNode();
-    if (!preview) return;
-
     if (!window.html2canvas) {
       notify('PDF unavailable', 'Export library did not load. Refresh and try again.');
       return;
@@ -416,14 +550,26 @@
       return;
     }
 
+    let captureRoot = null;
+
     try {
       if (document.fonts?.ready) await document.fonts.ready;
 
-      const canvas = await window.html2canvas(preview, {
+      const capture = buildPdfCaptureNode(draft);
+      if (!capture) {
+        notify('PDF unavailable', 'Invoice area is empty.');
+        return;
+      }
+
+      captureRoot = capture.wrapper;
+
+      const canvas = await window.html2canvas(capture.page, {
         backgroundColor: '#ffffff',
-        scale: 2,
+        scale: 2.4,
         useCORS: true,
-        scrollY: -window.scrollY
+        scrollY: 0,
+        windowWidth: capture.page.scrollWidth,
+        windowHeight: capture.page.scrollHeight
       });
 
       if (!canvas.width || !canvas.height) {
@@ -431,32 +577,34 @@
         return;
       }
 
-      const imageData = canvas.toDataURL('image/png');
       const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4', compress: true });
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
       const margin = 8;
       const printableWidth = pageWidth - (margin * 2);
       const printableHeight = pageHeight - (margin * 2);
-      const imageHeight = (canvas.height * printableWidth) / canvas.width;
 
-      let heightLeft = imageHeight;
-      let offsetY = margin;
+      const imageData = canvas.toDataURL('image/png');
+      const imageAspect = canvas.width / canvas.height;
 
-      pdf.addImage(imageData, 'PNG', margin, offsetY, printableWidth, imageHeight, undefined, 'FAST');
-      heightLeft -= printableHeight;
+      let renderWidth = printableWidth;
+      let renderHeight = renderWidth / imageAspect;
 
-      while (heightLeft > 0.1) {
-        offsetY = margin - (imageHeight - heightLeft);
-        pdf.addPage();
-        pdf.addImage(imageData, 'PNG', margin, offsetY, printableWidth, imageHeight, undefined, 'FAST');
-        heightLeft -= printableHeight;
+      if (renderHeight > printableHeight) {
+        renderHeight = printableHeight;
+        renderWidth = renderHeight * imageAspect;
       }
+
+      const x = (pageWidth - renderWidth) / 2;
+      const y = (pageHeight - renderHeight) / 2;
+      pdf.addImage(imageData, 'PNG', x, y, renderWidth, renderHeight, undefined, 'FAST');
 
       pdf.save(`${invoiceFileStem(draft)}.pdf`);
       notify('Download ready', 'Invoice PDF file exported.');
     } catch {
       notify('PDF unavailable', 'Could not generate PDF. Please refresh and retry.');
+    } finally {
+      if (captureRoot) captureRoot.remove();
     }
   };
 
@@ -572,10 +720,9 @@
     });
   };
 
-  const renderLogo = (draft, fileName = '') => {
+  const renderLogo = (draft) => {
     const preview = $('[data-logo-preview]');
     const placeholder = $('[data-logo-placeholder]');
-    const status = $('[data-logo-status]');
 
     if (preview) {
       if (draft.logoDataUrl) {
@@ -589,12 +736,6 @@
 
     if (placeholder) {
       placeholder.classList.toggle('hidden', Boolean(draft.logoDataUrl));
-    }
-
-    if (status) {
-      status.textContent = draft.logoDataUrl
-        ? (fileName ? `${fileName} ready` : 'Logo ready')
-        : 'No logo selected';
     }
   };
 
@@ -942,7 +1083,7 @@
       const reader = new FileReader();
       reader.onload = () => {
         draft.logoDataUrl = typeof reader.result === 'string' ? reader.result : '';
-        renderLogo(draft, file.name);
+        renderLogo(draft);
         saveDraft(draft);
       };
       reader.onerror = () => notify('Upload failed', 'Could not read this image.');

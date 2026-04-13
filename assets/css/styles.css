@@ -211,6 +211,12 @@ button {
   box-shadow: var(--shadow-soft);
 }
 
+.icon-btn[data-theme-toggle] {
+  font-size: 1.18rem;
+  line-height: 1;
+  font-weight: 800;
+}
+
 .btn:hover,
 .icon-btn:hover {
   transform: translateY(-1px);
@@ -3279,6 +3285,389 @@ body[data-page='invoice'] .ig-settings-card select:focus {
 
 .ig-history-title {
   margin: 0 0 6px;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] {
+  background: #070d16;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .topbar {
+  background: rgba(7, 13, 22, 0.86);
+  border-bottom-color: #1f2b3e;
+  box-shadow: none;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .brand,
+html[data-theme='dark'] body[data-page='invoice'] .nav-links a {
+  color: #cbd5e1;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .nav-links a:hover,
+html[data-theme='dark'] body[data-page='invoice'] .nav-links a.is-active {
+  background: #111a2c;
+  color: #f8fafc;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .icon-btn,
+html[data-theme='dark'] body[data-page='invoice'] .btn-secondary,
+html[data-theme='dark'] body[data-page='invoice'] .btn-ghost {
+  background: #111a2c;
+  border-color: #304158;
+  color: #e2e8f0;
+  box-shadow: none;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .btn-secondary:hover,
+html[data-theme='dark'] body[data-page='invoice'] .btn-ghost:hover,
+html[data-theme='dark'] body[data-page='invoice'] .icon-btn:hover {
+  background: #16243a;
+  border-color: #3f526c;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-sheet,
+html[data-theme='dark'] body[data-page='invoice'] .ig-settings-card,
+html[data-theme='dark'] body[data-page='invoice'] .ig-footer.footer {
+  background: #0c1525;
+  border-color: #24344a;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-settings-toggle {
+  background: #0c1525;
+  color: #f1f5f9;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-doc-title h1,
+html[data-theme='dark'] body[data-page='invoice'] .ig-item-amount,
+html[data-theme='dark'] body[data-page='invoice'] .ig-summary-total strong,
+html[data-theme='dark'] body[data-page='invoice'] .ig-summary-row,
+html[data-theme='dark'] body[data-page='invoice'] .ig-summary-input-row label,
+html[data-theme='dark'] body[data-page='invoice'] .ig-input-block > span,
+html[data-theme='dark'] body[data-page='invoice'] .ig-meta-grid label > span,
+html[data-theme='dark'] body[data-page='invoice'] .ig-textarea-block > span {
+  color: #e5edf7;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-setting-field > span,
+html[data-theme='dark'] body[data-page='invoice'] .footer-note {
+  color: #9fb1ca;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-logo-box {
+  background: #101b2f;
+  border-color: #304158;
+  color: #9fb1ca;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-doc-number,
+html[data-theme='dark'] body[data-page='invoice'] .ig-money-input,
+html[data-theme='dark'] body[data-page='invoice'] .ig-remove-item {
+  background: #111a2c;
+  border-color: #304158;
+  color: #e2e8f0;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-doc-number span,
+html[data-theme='dark'] body[data-page='invoice'] .ig-money-input span {
+  color: #a8bdd8;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-sheet input,
+html[data-theme='dark'] body[data-page='invoice'] .ig-sheet select,
+html[data-theme='dark'] body[data-page='invoice'] .ig-sheet textarea,
+html[data-theme='dark'] body[data-page='invoice'] .ig-settings-card select {
+  background: #111a2c;
+  border-color: #304158;
+  color: #e2e8f0;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-sheet input:focus,
+html[data-theme='dark'] body[data-page='invoice'] .ig-sheet select:focus,
+html[data-theme='dark'] body[data-page='invoice'] .ig-sheet textarea:focus,
+html[data-theme='dark'] body[data-page='invoice'] .ig-settings-card select:focus {
+  border-color: #4b6282;
+  box-shadow: 0 0 0 3px rgba(75, 98, 130, 0.32);
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-items-table th {
+  background: #101c30;
+  color: #f8fafc;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-items-table td,
+html[data-theme='dark'] body[data-page='invoice'] .ig-summary-row {
+  border-bottom-color: #24344a;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-summary-total {
+  border-top-color: #304158;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
+  color: #34d399;
+}
+
+.ig-pdf-capture-wrap {
+  position: fixed;
+  left: -200vw;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ig-pdf-page {
+  width: 920px;
+  min-height: 1298px;
+  padding: 64px 70px 60px;
+  background: #ffffff;
+  border: 1px solid #dde4ef;
+  color: #111827;
+  font-family: 'Sora', sans-serif;
+}
+
+.ig-pdf-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 64px;
+  margin-bottom: 52px;
+}
+
+.ig-pdf-brand-col {
+  width: 230px;
+  display: grid;
+  gap: 14px;
+}
+
+.ig-pdf-logo {
+  width: 124px;
+  height: 124px;
+  border: 1px solid #d4dce9;
+  border-radius: 8px;
+  background: #f8fbff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7f9a;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ig-pdf-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+  background: #ffffff;
+}
+
+.ig-pdf-company {
+  margin: 0;
+  min-height: 42px;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ig-pdf-doc-col {
+  flex: 1;
+  min-width: 0;
+  text-align: right;
+}
+
+.ig-pdf-doc-col h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 58px;
+  line-height: 0.94;
+  letter-spacing: 0.03em;
+}
+
+.ig-pdf-doc-number {
+  margin: 8px 0 0;
+  color: #93a0b5;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.ig-pdf-meta {
+  margin: 42px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.ig-pdf-meta div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 26px;
+}
+
+.ig-pdf-meta dt {
+  color: #7b879a;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.ig-pdf-meta dd {
+  margin: 0;
+  min-width: 180px;
+  text-align: right;
+  color: #1f2937;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.ig-pdf-party-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 52px;
+  margin-bottom: 34px;
+}
+
+.ig-pdf-party-grid h2 {
+  margin: 0 0 8px;
+  color: #8b98ac;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.ig-pdf-party-grid p {
+  margin: 0;
+  min-height: 34px;
+  color: #111827;
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.ig-pdf-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 40px;
+}
+
+.ig-pdf-table th {
+  background: #26292f;
+  color: #ffffff;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 14px 18px;
+}
+
+.ig-pdf-table th:nth-child(n + 2) {
+  text-align: right;
+}
+
+.ig-pdf-table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid #e5ebf3;
+  color: #1f2937;
+  font-size: 20px;
+  vertical-align: top;
+}
+
+.ig-pdf-table td.ig-pdf-num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ig-pdf-overflow {
+  text-align: center;
+  color: #64748b;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.ig-pdf-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.ig-pdf-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 42px;
+}
+
+.ig-pdf-notes-col {
+  display: grid;
+  gap: 34px;
+}
+
+.ig-pdf-note-block h3 {
+  margin: 0;
+  color: #98a3b5;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.ig-pdf-note-block p {
+  margin: 10px 0 0;
+  min-height: 86px;
+  color: #4b5563;
+  font-size: 18px;
+  line-height: 1.6;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 6;
+  -webkit-line-clamp: 6;
+}
+
+.ig-pdf-note-compact p {
+  min-height: 0;
+  color: #1f2937;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+}
+
+.ig-pdf-summary-col {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.ig-pdf-summary-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  color: #1f2937;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.ig-pdf-summary-row strong {
+  font-weight: 700;
+}
+
+.ig-pdf-summary-total {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 2px solid #cfd9e7;
+  font-size: 30px;
+}
+
+.ig-pdf-summary-total strong {
+  font-size: 34px;
+}
+
+.ig-pdf-balance-row {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #dde4ef;
+  color: #16a34a;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.ig-pdf-balance-row strong {
+  color: #16a34a;
+  font-size: 38px;
 }
 
 @media (max-width: 1120px) {
