@@ -30,14 +30,8 @@ Supabase config is stored in [assets/js/supabase-config.js](assets/js/supabase-c
 - profiles
 - clients
 - invoices
-- blog_posts
 
-## 5) Blog admin route
-
-- Open `/admin/` after login to manage blog posts.
-- Features: create, edit, publish/draft, delete, cover images, SEO fields, and live preview.
-
-## 6) Hosting notes
+## 5) Hosting notes
 
 - Host as static files.
-- Ensure clean paths like /invoice/, /blog/, /blog/post/, and /admin/ are supported by your host.
+- Ensure clean paths like /invoice/, /help/, /history/, and /guide/ are supported by your host.

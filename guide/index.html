@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Invoicing guide with best practices for clear billing and faster payments.">
+  <meta name="theme-color" content="#00b67a">
+  <title>Invoicing Guide | Invoice-Generator Style</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="icon" href="/assets/img/createinvoicefast-logo.svg" type="image/svg+xml">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/site-supabase.js" defer></script>
+</head>
+<body data-page="guide">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/">
+          <span class="brand-mark">C</span>
+          <span>Invoice-Generator.com</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/help/">Help</a>
+          <a href="/history/">History</a>
+          <a href="/guide/">Invoicing Guide</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+          <a class="btn btn-ghost js-guest-nav" href="/login/">Sign In</a>
+          <a class="btn btn-primary js-guest-nav" href="/signup/">Sign Up</a>
+          <a class="btn btn-ghost js-auth-nav hidden" href="/history/">History</a>
+          <button class="btn btn-primary js-auth-nav hidden js-sign-out" type="button">Sign Out</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="ig-page-section">
+        <div class="container ig-page-grid">
+          <article class="ig-page-card">
+            <h1>Invoicing Guide</h1>
+            <p>Simple invoicing practices that make your invoices easier to approve and faster to pay.</p>
+
+            <h2>1. Keep invoice details complete</h2>
+            <p>Include a clear invoice number, issue date, due date, and client details. Missing basics create delays.</p>
+
+            <h2>2. Use clear line items</h2>
+            <p>Each row should explain what was delivered. Keep descriptions specific and quantity/rate values easy to verify.</p>
+
+            <h2>3. Make totals obvious</h2>
+            <p>Show tax, discounts, shipping, total, and balance due in one area. Clients should not guess the final amount.</p>
+
+            <h2>4. Add payment terms</h2>
+            <p>Write terms in plain language. Include accepted payment methods and any late fee policy if needed.</p>
+
+            <h2>5. Save and reuse</h2>
+            <p>Save invoices to your account history so you can duplicate patterns, track payment status, and reduce data entry errors.</p>
+          </article>
+
+          <aside class="ig-page-card">
+            <h2>Quick Actions</h2>
+            <div class="inline-actions" style="margin-top:12px;flex-direction:column;align-items:stretch">
+              <a class="btn btn-primary" href="/">Open Invoice Generator</a>
+              <a class="btn btn-secondary" href="/history/">Open History</a>
+              <a class="btn btn-secondary" href="/help/">Open Help</a>
+            </div>
+
+            <h2 style="margin-top:26px">Good Invoice Checklist</h2>
+            <ul>
+              <li>Invoice number and date</li>
+              <li>Client name</li>
+              <li>Clear line items</li>
+              <li>Tax and discount values</li>
+              <li>Total and balance due</li>
+              <li>Notes and terms</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer ig-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="/"><span class="brand-mark">C</span><span>Invoice-Generator.com</span></a>
+          <p class="footer-note">Guidance for better invoices and better payment timelines.</p>
+        </div>
+        <div>
+          <strong>Use Invoice Generator</strong>
+          <div class="footer-links">
+            <a href="/">Invoice Template</a>
+            <a href="/history/">Invoice History</a>
+            <a href="/guide/">Invoicing Guide</a>
+          </div>
+        </div>
+        <div>
+          <strong>Resources</strong>
+          <div class="footer-links">
+            <a href="/help/">Help</a>
+            <a href="/login/">Sign In</a>
+            <a href="/signup/">Sign Up</a>
+            <a href="/terms/">Terms of Service</a>
+            <a href="/privacy/">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-note">Copyright © <span class="js-year"></span> Invoice-Generator.com</div>
+    </footer>
+  </div>
+</body>
+</html>

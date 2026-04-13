@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Invoice history page with saved invoices and quick actions.">
+  <meta name="theme-color" content="#00b67a">
+  <title>History | Invoice-Generator Style</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="icon" href="/assets/img/createinvoicefast-logo.svg" type="image/svg+xml">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/site-supabase.js" defer></script>
+</head>
+<body data-page="history">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/">
+          <span class="brand-mark">C</span>
+          <span>Invoice-Generator.com</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/help/">Help</a>
+          <a href="/history/">History</a>
+          <a href="/guide/">Invoicing Guide</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+          <a class="btn btn-ghost js-guest-nav" href="/login/">Sign In</a>
+          <a class="btn btn-primary js-guest-nav" href="/signup/">Sign Up</a>
+          <a class="btn btn-ghost js-auth-nav hidden" href="/history/">History</a>
+          <button class="btn btn-primary js-auth-nav hidden js-sign-out" type="button">Sign Out</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="ig-page-section">
+        <div class="container">
+          <div class="section-title" style="margin-bottom:16px;align-items:flex-end">
+            <div>
+              <h1 class="ig-history-title">Invoice History</h1>
+              <p>Review saved invoices, mark paid, or reopen any invoice for editing.</p>
+            </div>
+            <div class="inline-actions no-print">
+              <a class="btn btn-primary" href="/">Create New Invoice</a>
+            </div>
+          </div>
+
+          <div class="dashboard-summary ig-history-stats">
+            <div class="summary-card"><strong data-history-count>0</strong><span>Invoices</span></div>
+            <div class="summary-card"><strong data-history-due>0</strong><span>Open</span></div>
+            <div class="summary-card"><strong data-history-total>$0.00</strong><span>Total billed</span></div>
+            <div class="summary-card"><strong>Live</strong><span>Supabase sync</span></div>
+          </div>
+
+          <section class="panel" data-history-page>
+            <div style="overflow:auto">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Invoice #</th>
+                    <th>Client</th>
+                    <th>Dates</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Updated</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody data-history-table>
+                  <tr><td colspan="7">Loading invoice history...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer ig-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="/"><span class="brand-mark">C</span><span>Invoice-Generator.com</span></a>
+          <p class="footer-note">Invoice history is tied to your account and available after sign in.</p>
+        </div>
+        <div>
+          <strong>Use Invoice Generator</strong>
+          <div class="footer-links">
+            <a href="/">Invoice Template</a>
+            <a href="/history/">Invoice History</a>
+            <a href="/guide/">Invoicing Guide</a>
+          </div>
+        </div>
+        <div>
+          <strong>Resources</strong>
+          <div class="footer-links">
+            <a href="/help/">Help</a>
+            <a href="/login/">Sign In</a>
+            <a href="/signup/">Sign Up</a>
+            <a href="/terms/">Terms of Service</a>
+            <a href="/privacy/">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-note">Copyright © <span class="js-year"></span> Invoice-Generator.com</div>
+    </footer>
+  </div>
+</body>
+</html>

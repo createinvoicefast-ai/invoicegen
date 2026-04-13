@@ -3,16 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Create invoices with dynamic fields, calculations, templates, social sharing, and PDF-ready output.">
-  <meta name="theme-color" content="#22c55e">
-  <title>CreateInvoiceFast | Instant Invoice Creator</title>
+  <meta name="description" content="Free invoice template with fast editing, PDF download, and account history.">
+  <meta name="theme-color" content="#00b67a">
+  <title>Free Invoice Template | Invoice-Generator Style</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
   <link rel="icon" href="/assets/img/createinvoicefast-logo.svg" type="image/svg+xml">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js" defer></script>
   <script src="/assets/js/supabase-config.js" defer></script>
-  <script src="/assets/js/data.js" defer></script>
   <script src="/assets/js/site-supabase.js" defer></script>
 </head>
 <body data-page="invoice">
@@ -21,238 +20,221 @@
       <div class="container nav">
         <a class="brand" href="/">
           <span class="brand-mark">C</span>
-          <span>CreateInvoiceFast</span>
+          <span>Invoice-Generator.com</span>
         </a>
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="/invoice/">Invoice Creator</a>
-          <a href="/dashboard/">Dashboard</a>
-          <a href="/blog/">Blog</a>
-          <a href="/about/">About</a>
-          <a href="/contact/">Contact</a>
+          <a href="/help/">Help</a>
+          <a href="/history/">History</a>
+          <a href="/guide/">Invoicing Guide</a>
         </nav>
         <div class="nav-actions">
           <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
-          <a class="btn btn-ghost js-guest-nav" href="/login/">Login</a>
+          <a class="btn btn-ghost js-guest-nav" href="/login/">Sign In</a>
           <a class="btn btn-primary js-guest-nav" href="/signup/">Sign Up</a>
-          <a class="btn btn-ghost js-auth-nav hidden" href="/dashboard/">Dashboard</a>
+          <a class="btn btn-ghost js-auth-nav hidden" href="/history/">History</a>
           <button class="btn btn-primary js-auth-nav hidden js-sign-out" type="button">Sign Out</button>
         </div>
       </div>
     </header>
-
-    <main>
-      <section class="section invoice-stage">
-        <div class="invoice-stage-layout">
-          <aside class="ad-slot ad-slot-vertical no-print" data-ad-slot="left" aria-label="Ad space"></aside>
-
-          <div class="container invoice-stage-core">
-            <div class="section-title">
-              <div>
-                <div class="eyebrow">Invoice creator</div>
-                <h1 data-invoice-title>Create a new invoice</h1>
-                <p>Build, preview, and export a polished invoice in one place. Switch templates before downloading the PDF version.</p>
-              </div>
-              <div class="inline-actions no-print">
-                <button class="btn btn-secondary" data-reset-draft type="button">Reset draft</button>
-                <button class="btn btn-primary" data-save-invoice type="button">Save invoice</button>
-                <a class="btn btn-secondary" href="/dashboard/">Open dashboard</a>
+    <main class="ig-main">
+      <section class="ig-stage">
+        <div class="ig-layout">
+          <form class="ig-sheet" data-invoice-form data-invoice-preview>
+            <div class="ig-sheet-head">
+              <label class="ig-logo-box" for="invoiceLogo">
+                <input id="invoiceLogo" type="file" accept="image/*" data-logo-upload>
+                <img class="ig-logo-preview hidden" data-logo-preview alt="Company logo preview">
+                <span data-logo-placeholder>+ Add Your Logo</span>
+              </label>
+              <div class="ig-doc-title">
+                <h1>INVOICE</h1>
+                <label class="ig-doc-number">
+                  <span>#</span>
+                  <input name="invoiceNumber" placeholder="1" inputmode="numeric">
+                </label>
               </div>
             </div>
-
-            <div class="grid-2 print-area">
-              <section class="panel no-print">
-                <div class="panel-header">
-                  <h3>Invoice fields</h3>
-                  <span class="badge">Dynamic form</span>
-                </div>
-                <form class="form-grid" data-invoice-form>
-                  <div class="field">
-                    <label for="companyName">Company name</label>
-                    <input id="companyName" name="companyName" placeholder="Your business name">
-                  </div>
-                  <div class="field">
-                    <label for="companyEmail">Company email</label>
-                    <input id="companyEmail" name="companyEmail" type="email" placeholder="billing@company.com">
-                  </div>
-                  <div class="field full">
-                    <label for="companyAddress">Company address</label>
-                    <input id="companyAddress" name="companyAddress" placeholder="Street address, city, country">
-                  </div>
-                  <div class="field full invoice-logo-field">
-                    <label for="invoiceLogo">Company logo (optional)</label>
-                    <input id="invoiceLogo" type="file" accept="image/*" data-logo-upload>
-                    <div class="inline-actions">
-                      <button class="btn btn-ghost" data-clear-logo type="button">Remove logo</button>
-                      <span class="field-hint" data-logo-status>No logo selected</span>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <label for="clientName">Client name</label>
-                    <input id="clientName" name="clientName" placeholder="Client or company name">
-                  </div>
-                  <div class="field">
-                    <label for="clientEmail">Client email</label>
-                    <input id="clientEmail" name="clientEmail" type="email" placeholder="client@example.com">
-                  </div>
-                  <div class="field full">
-                    <label for="clientAddress">Client address</label>
-                    <input id="clientAddress" name="clientAddress" placeholder="Client billing address">
-                  </div>
-                  <div class="field full">
-                    <label for="shipTo">Ship to (optional)</label>
-                    <input id="shipTo" name="shipTo" placeholder="Shipping destination if different from billing address">
-                  </div>
-                  <div class="field">
-                    <label for="invoiceNumber">Invoice number</label>
-                    <input id="invoiceNumber" name="invoiceNumber" placeholder="INV-2026-001">
-                  </div>
-                  <div class="field">
-                    <label for="projectName">Project / service</label>
-                    <input id="projectName" name="projectName" placeholder="Brand strategy and design">
-                  </div>
-                  <div class="field">
-                    <label for="issueDate">Issue date</label>
-                    <input id="issueDate" name="issueDate" type="date">
-                  </div>
-                  <div class="field">
-                    <label for="dueDate">Due date</label>
-                    <input id="dueDate" name="dueDate" type="date">
-                  </div>
-                  <div class="field">
-                    <label for="paymentTerms">Payment terms</label>
-                    <input id="paymentTerms" name="paymentTerms" placeholder="Net 15, Net 30, upon receipt">
-                  </div>
-                  <div class="field">
-                    <label for="poNumber">PO number</label>
-                    <input id="poNumber" name="poNumber" placeholder="Purchase order reference">
-                  </div>
-                  <div class="field">
-                    <label for="currency">Currency</label>
-                    <select id="currency" name="currency">
-                      <option value="USD">USD</option>
-                      <option value="EUR">EUR</option>
-                      <option value="GBP">GBP</option>
-                      <option value="CAD">CAD</option>
-                      <option value="AUD">AUD</option>
-                      <option value="AED">AED</option>
-                      <option value="SAR">SAR</option>
-                      <option value="INR">INR</option>
-                    </select>
-                  </div>
-                  <div class="field">
-                    <label for="taxRate">Tax rate (%)</label>
-                    <input id="taxRate" name="taxRate" type="number" min="0" step="0.01">
-                  </div>
-                  <div class="field">
-                    <label for="discount">Discount amount</label>
-                    <input id="discount" name="discount" type="number" min="0" step="0.01" placeholder="Optional discount amount">
-                  </div>
-                  <div class="field">
-                    <label for="shipping">Shipping amount</label>
-                    <input id="shipping" name="shipping" type="number" min="0" step="0.01" placeholder="Optional shipping charge">
-                  </div>
-                  <div class="field">
-                    <label for="amountPaid">Amount paid</label>
-                    <input id="amountPaid" name="amountPaid" type="number" min="0" step="0.01" placeholder="Optional paid amount">
-                  </div>
-                  <div class="field">
-                    <label for="status">Status</label>
-                    <select id="status" name="status">
-                      <option value="draft">Draft</option>
-                      <option value="due">Due</option>
-                      <option value="paid">Paid</option>
-                    </select>
-                  </div>
-                  <div class="field full">
-                    <label for="notes">Notes</label>
-                    <textarea id="notes" name="notes" placeholder="Payment terms, thank-you note, or extra instructions"></textarea>
-                  </div>
-                  <div class="field full">
-                    <div class="panel-header" style="margin-bottom:10px">
-                      <h3>Line items</h3>
-                      <button class="btn btn-secondary" data-add-item type="button">Add item</button>
-                    </div>
-                    <div class="items-list" data-items-list></div>
-                  </div>
-                </form>
-              </section>
-
-              <section class="template-switcher">
-                <div class="panel no-print">
-                  <div class="panel-header">
-                    <h3>Template preview</h3>
-                    <span class="badge">Before download</span>
-                  </div>
-                  <div class="template-tabs" data-template-tabs></div>
-                  <p class="kicker" style="margin-top:14px">Pick the look that best fits the client. The content and totals stay synchronized while the style changes.</p>
-                </div>
-                <div class="template-preview">
-                  <div class="invoice-preview" data-invoice-preview></div>
-                </div>
-                <div class="panel no-print invoice-export-panel">
-                  <div class="panel-header">
-                    <h3>Download options</h3>
-                    <span class="badge">PDF PNG JSON CSV</span>
-                  </div>
-                  <div class="invoice-download-grid">
-                    <button class="btn btn-primary" data-download-pdf type="button">Download PDF</button>
-                    <button class="btn btn-secondary" data-download-print type="button">Print invoice</button>
-                    <button class="btn btn-secondary" data-download-png type="button">Download PNG</button>
-                    <button class="btn btn-secondary" data-download-json type="button">Download JSON</button>
-                    <button class="btn btn-secondary" data-download-csv type="button">Download CSV</button>
-                  </div>
-                </div>
-                <div class="social-card no-print">
-                  <div class="panel-header">
-                    <h3>Share invoice</h3>
-                    <span class="badge">Mobile friendly</span>
-                  </div>
-                  <div class="share-row">
-                    <button class="btn btn-secondary" data-share="whatsapp" type="button">WhatsApp</button>
-                    <button class="btn btn-secondary" data-share="facebook" type="button">Facebook</button>
-                    <button class="btn btn-secondary" data-share="reddit" type="button">Reddit</button>
-                    <button class="btn btn-secondary" data-share="x" type="button">X</button>
-                    <button class="btn btn-secondary" data-share="linkedin" type="button">LinkedIn</button>
-                  </div>
-                </div>
-              </section>
+            <div class="ig-row ig-row-top">
+              <label class="ig-input-block">
+                <span>Who is this from?</span>
+                <input name="companyName" placeholder="Your business name">
+              </label>
+              <div class="ig-meta-grid">
+                <label>
+                  <span>Date</span>
+                  <input name="issueDate" type="date">
+                </label>
+                <label>
+                  <span>Payment Terms</span>
+                  <input name="paymentTerms" placeholder="Net 30">
+                </label>
+                <label>
+                  <span>Due Date</span>
+                  <input name="dueDate" type="date">
+                </label>
+                <label>
+                  <span>PO Number</span>
+                  <input name="poNumber" placeholder="(optional)">
+                </label>
+              </div>
             </div>
-          </div>
-
-          <aside class="ad-slot ad-slot-vertical no-print" data-ad-slot="right" aria-label="Ad space"></aside>
-        </div>
-
-        <div class="container no-print">
-          <div class="ad-slot ad-slot-banner" data-ad-slot="bottom" aria-label="Ad space"></div>
+            <div class="ig-row ig-row-parties">
+              <label class="ig-input-block">
+                <span>Bill To</span>
+                <input name="clientName" placeholder="Who is this to?">
+              </label>
+              <label class="ig-input-block">
+                <span>Ship To</span>
+                <input name="shipTo" placeholder="(optional)">
+              </label>
+            </div>
+            <div class="ig-items-wrap">
+              <table class="ig-items-table">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                    <th class="ig-col-remove"></th>
+                  </tr>
+                </thead>
+                <tbody data-items-list></tbody>
+              </table>
+              <button class="btn btn-secondary ig-add-item" data-add-item type="button">+ Line Item</button>
+            </div>
+            <div class="ig-bottom-grid">
+              <div class="ig-notes-col">
+                <label class="ig-textarea-block">
+                  <span>Notes</span>
+                  <textarea name="notes" placeholder="Notes - any relevant information not already covered"></textarea>
+                </label>
+                <label class="ig-textarea-block">
+                  <span>Terms</span>
+                  <textarea name="terms" placeholder="Terms and conditions - late fees, payment methods, delivery schedule"></textarea>
+                </label>
+              </div>
+              <div class="ig-summary-col">
+                <div class="ig-summary-row">
+                  <span>Subtotal</span>
+                  <strong data-subtotal-value>$0.00</strong>
+                </div>
+                <div class="ig-summary-row ig-summary-input-row">
+                  <label for="taxRate">Tax</label>
+                  <div class="ig-inline-input">
+                    <input id="taxRate" name="taxRate" type="number" min="0" step="0.01" value="0">
+                    <span>%</span>
+                  </div>
+                </div>
+                <div class="ig-summary-row ig-summary-input-row">
+                  <label for="discount">Discount</label>
+                  <div class="ig-money-input">
+                    <span data-currency-symbol>$</span>
+                    <input id="discount" name="discount" type="number" min="0" step="0.01" value="0">
+                  </div>
+                </div>
+                <div class="ig-summary-row ig-summary-input-row">
+                  <label for="shipping">Shipping</label>
+                  <div class="ig-money-input">
+                    <span data-currency-symbol>$</span>
+                    <input id="shipping" name="shipping" type="number" min="0" step="0.01" value="0">
+                  </div>
+                </div>
+                <div class="ig-summary-row ig-summary-total">
+                  <span>Total</span>
+                  <strong data-total-value>$0.00</strong>
+                </div>
+                <div class="ig-summary-row ig-summary-input-row">
+                  <label for="amountPaid">Amount Paid</label>
+                  <div class="ig-money-input">
+                    <span data-currency-symbol>$</span>
+                    <input id="amountPaid" name="amountPaid" type="number" min="0" step="0.01" value="0">
+                  </div>
+                </div>
+                <div class="ig-summary-row ig-summary-balance">
+                  <span>Balance Due</span>
+                  <strong data-balance-value>$0.00</strong>
+                </div>
+              </div>
+            </div>
+            <input type="hidden" name="companyEmail" value="">
+            <input type="hidden" name="companyAddress" value="">
+            <input type="hidden" name="clientEmail" value="">
+            <input type="hidden" name="clientAddress" value="">
+            <input type="hidden" name="projectName" value="">
+            <input type="hidden" name="template" value="classic">
+          </form>
+          <aside class="ig-sidebar no-print">
+            <button class="btn btn-primary ig-download-btn" data-download-pdf type="button">Download</button>
+            <div class="ig-settings-card">
+              <button class="ig-settings-toggle" data-toggle-settings type="button" aria-expanded="true">
+                <span>Invoice Settings</span>
+                <span aria-hidden="true">▾</span>
+              </button>
+              <div class="ig-settings-body" data-settings-body>
+                <label class="ig-setting-field">
+                  <span>Currency</span>
+                  <select name="currency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CAD">CAD</option>
+                    <option value="AUD">AUD</option>
+                    <option value="AED">AED</option>
+                    <option value="SAR">SAR</option>
+                    <option value="INR">INR</option>
+                  </select>
+                </label>
+                <label class="ig-setting-field">
+                  <span>Status</span>
+                  <select name="status">
+                    <option value="due">Due</option>
+                    <option value="paid">Paid</option>
+                    <option value="draft">Draft</option>
+                  </select>
+                </label>
+                <p class="field-hint" data-logo-status>No logo selected</p>
+                <div class="ig-settings-actions">
+                  <button class="btn btn-secondary" data-save-invoice type="button">Save Invoice</button>
+                  <button class="btn btn-secondary" data-download-print type="button">Print</button>
+                  <button class="btn btn-secondary" data-download-png type="button">Download PNG</button>
+                  <button class="btn btn-secondary" data-download-json type="button">Download JSON</button>
+                  <button class="btn btn-secondary" data-download-csv type="button">Download CSV</button>
+                  <button class="btn btn-ghost" data-clear-logo type="button">Remove Logo</button>
+                  <button class="btn btn-ghost" data-reset-draft type="button">Reset Invoice</button>
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
     </main>
-
-    <footer class="footer no-print">
+    <footer class="footer no-print ig-footer">
       <div class="container footer-grid">
         <div>
-          <a class="brand" href="/"><span class="brand-mark">C</span><span>CreateInvoiceFast</span></a>
-          <p class="footer-note">Save invoices to your account, keep track of clients, and export clean PDF-ready billing documents.</p>
+          <a class="brand" href="/"><span class="brand-mark">C</span><span>Invoice-Generator.com</span></a>
+          <p class="footer-note">Create professional invoices with one click. Download as PDF, PNG, JSON, or CSV.</p>
         </div>
         <div>
-          <strong>Pages</strong>
+          <strong>Use Invoice Generator</strong>
           <div class="footer-links">
-            <a href="/about/">About</a>
-            <a href="/contact/">Contact</a>
-            <a href="/privacy/">Privacy Policy</a>
-            <a href="/terms/">Terms of Service</a>
+            <a href="/">Invoice Template</a>
+            <a href="/history/">Invoice History</a>
+            <a href="/guide/">Invoicing Guide</a>
           </div>
         </div>
         <div>
           <strong>Resources</strong>
           <div class="footer-links">
-            <a href="/dashboard/">Dashboard</a>
-            <a href="/blog/">Blog</a>
-            <a href="/signup/">Create account</a>
+            <a href="/help/">Help</a>
+            <a href="/login/">Sign In</a>
+            <a href="/signup/">Sign Up</a>
+            <a href="/terms/">Terms of Service</a>
+            <a href="/privacy/">Privacy Policy</a>
           </div>
         </div>
       </div>
-      <div class="container footer-note">Copyright © <span class="js-year"></span> CreateInvoiceFast.</div>
+      <div class="container footer-note">Copyright © <span class="js-year"></span> Invoice-Generator.com</div>
     </footer>
   </div>
 </body>

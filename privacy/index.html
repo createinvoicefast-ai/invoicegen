@@ -3,57 +3,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Privacy Policy for CreateInvoiceFast covering account data, local storage, and site analytics readiness.">
-  <meta name="theme-color" content="#22c55e">
-  <title>Privacy Policy | CreateInvoiceFast</title>
+  <meta name="description" content="Privacy policy for invoice creation, account access, and invoice history data handling.">
+  <meta name="theme-color" content="#00b67a">
+  <title>Privacy Policy | Invoice-Generator Style</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="icon" href="/assets/img/createinvoicefast-logo.svg" type="image/svg+xml">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/assets/js/supabase-config.js" defer></script>
-  <script src="/assets/js/data.js" defer></script>
   <script src="/assets/js/site-supabase.js" defer></script>
 </head>
 <body data-page="privacy">
   <div class="page-shell">
     <header class="topbar">
       <div class="container nav">
-        <a class="brand" href="/"><span class="brand-mark">C</span><span>CreateInvoiceFast</span></a>
+        <a class="brand" href="/">
+          <span class="brand-mark">C</span>
+          <span>Invoice-Generator.com</span>
+        </a>
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="/invoice/">Invoice Generator</a>
-          <a href="/dashboard/">Dashboard</a>
-          <a href="/blog/">Blog</a>
-          <a href="/about/">About</a>
-          <a href="/contact/">Contact</a>
+          <a href="/help/">Help</a>
+          <a href="/history/">History</a>
+          <a href="/guide/">Invoicing Guide</a>
         </nav>
         <div class="nav-actions">
           <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+          <a class="btn btn-ghost js-guest-nav" href="/login/">Sign In</a>
+          <a class="btn btn-primary js-guest-nav" href="/signup/">Sign Up</a>
+          <a class="btn btn-ghost js-auth-nav hidden" href="/history/">History</a>
+          <button class="btn btn-primary js-auth-nav hidden js-sign-out" type="button">Sign Out</button>
         </div>
       </div>
     </header>
+
     <main>
-      <section class="section">
+      <section class="ig-page-section">
         <div class="container">
-          <div class="article-card article-body">
-            <div class="eyebrow">Privacy Policy</div>
-            <h1>How this site handles data.</h1>
-            <p>This project is built as a front-end experience. Account records, invoices, and draft data are stored locally in the browser so the user can access personal billing information without a server.</p>
-            <h2>Data we store</h2>
+          <article class="ig-page-card article-body">
+            <h1>Privacy Policy</h1>
+            <p>This website stores invoice drafts locally in your browser and uses Supabase when cloud history is enabled.</p>
+
+            <h2>Data Collected</h2>
             <ul>
-              <li>Name, email, and password hash for the local login system.</li>
-              <li>Invoice drafts, saved invoices, and client details tied to the signed-in account.</li>
-              <li>Theme preference and basic UI settings for a better experience.</li>
+              <li>Invoice form data you enter</li>
+              <li>Account email and authentication details through Supabase</li>
+              <li>Saved invoice records tied to your account</li>
+              <li>Theme preference and basic local UI settings</li>
             </ul>
-            <h2>How data is used</h2>
-            <p>Stored data is used only to power login, dashboard history, invoice editing, and template preferences on this device.</p>
-            <h2>Ads and analytics</h2>
-            <p>The layout includes reserved space for future advertising but does not show ads now. If analytics or ad services are added later, this policy should be updated to describe the third-party tools being used.</p>
+
+            <h2>How Data Is Used</h2>
+            <p>Data is used only to create invoices, save invoice history, and support account access.</p>
+
+            <h2>Data Sharing</h2>
+            <p>We do not sell personal data. Data processing is limited to the services required to operate the invoice application.</p>
+
             <h2>Contact</h2>
-            <p>If you need a custom privacy policy for a live business deployment, add your company details and legal review before launch.</p>
-          </div>
+            <p>For privacy requests, use the Help page contact form.</p>
+          </article>
         </div>
       </section>
     </main>
-    <footer class="footer">
-      <div class="container footer-note">Copyright © <span class="js-year"></span> CreateInvoiceFast.</div>
+
+    <footer class="footer ig-footer">
+      <div class="container footer-note">Copyright © <span class="js-year"></span> Invoice-Generator.com</div>
     </footer>
   </div>
 </body>

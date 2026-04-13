@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Invoice generator help center with common answers and support form.">
+  <meta name="theme-color" content="#00b67a">
+  <title>Help | Invoice-Generator Style</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="icon" href="/assets/img/createinvoicefast-logo.svg" type="image/svg+xml">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/site-supabase.js" defer></script>
+</head>
+<body data-page="help">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/">
+          <span class="brand-mark">C</span>
+          <span>Invoice-Generator.com</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/help/">Help</a>
+          <a href="/history/">History</a>
+          <a href="/guide/">Invoicing Guide</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+          <a class="btn btn-ghost js-guest-nav" href="/login/">Sign In</a>
+          <a class="btn btn-primary js-guest-nav" href="/signup/">Sign Up</a>
+          <a class="btn btn-ghost js-auth-nav hidden" href="/history/">History</a>
+          <button class="btn btn-primary js-auth-nav hidden js-sign-out" type="button">Sign Out</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="ig-page-section">
+        <div class="container ig-page-grid">
+          <article class="ig-page-card">
+            <h1>Help Center</h1>
+            <p>Find quick answers for invoice creation, downloads, account access, and invoice history.</p>
+
+            <div class="ig-faq">
+              <details open>
+                <summary>How do I create an invoice?</summary>
+                <p>Open the main invoice page, fill in your business and client information, add line items, and the totals are calculated automatically.</p>
+              </details>
+              <details>
+                <summary>Can I download invoices as PDF?</summary>
+                <p>Yes. Use the Download button in the right settings panel. You can also export PNG, JSON, or CSV formats.</p>
+              </details>
+              <details>
+                <summary>How do I keep my invoices?</summary>
+                <p>Create an account, sign in, and use Save Invoice. Saved records are available on the History page.</p>
+              </details>
+              <details>
+                <summary>Why am I asked to sign in for history?</summary>
+                <p>Invoice history is account-specific. Sign in ensures each user only sees their own invoices.</p>
+              </details>
+            </div>
+          </article>
+
+          <aside class="ig-page-card">
+            <h2>Contact Support</h2>
+            <p>Need help with setup or invoice behavior? Send your message below.</p>
+
+            <form class="form-grid" data-help-form>
+              <div class="field full">
+                <label for="help-name">Name</label>
+                <input id="help-name" name="name" placeholder="Your name">
+              </div>
+              <div class="field full">
+                <label for="help-email">Email</label>
+                <input id="help-email" name="email" type="email" placeholder="you@example.com">
+              </div>
+              <div class="field full">
+                <label for="help-message">Message</label>
+                <textarea id="help-message" name="message" placeholder="Tell us what happened"></textarea>
+              </div>
+              <div class="field full">
+                <button class="btn btn-primary" type="submit">Send Message</button>
+              </div>
+            </form>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer ig-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="/"><span class="brand-mark">C</span><span>Invoice-Generator.com</span></a>
+          <p class="footer-note">Create professional invoices with one click and keep your history organized.</p>
+        </div>
+        <div>
+          <strong>Use Invoice Generator</strong>
+          <div class="footer-links">
+            <a href="/">Invoice Template</a>
+            <a href="/history/">Invoice History</a>
+            <a href="/guide/">Invoicing Guide</a>
+          </div>
+        </div>
+        <div>
+          <strong>Resources</strong>
+          <div class="footer-links">
+            <a href="/login/">Sign In</a>
+            <a href="/signup/">Sign Up</a>
+            <a href="/terms/">Terms of Service</a>
+            <a href="/privacy/">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-note">Copyright © <span class="js-year"></span> Invoice-Generator.com</div>
+    </footer>
+  </div>
+</body>
+</html>

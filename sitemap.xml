@@ -2,15 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>/</loc></url>
   <url><loc>/invoice/</loc></url>
-  <url><loc>/dashboard/</loc></url>
+  <url><loc>/help/</loc></url>
+  <url><loc>/history/</loc></url>
+  <url><loc>/guide/</loc></url>
   <url><loc>/login/</loc></url>
   <url><loc>/signup/</loc></url>
-  <url><loc>/about/</loc></url>
-  <url><loc>/contact/</loc></url>
   <url><loc>/privacy/</loc></url>
   <url><loc>/terms/</loc></url>
-  <url><loc>/blog/</loc></url>
-  <url><loc>/blog/invoice-pricing-tips/</loc></url>
-  <url><loc>/blog/client-invoicing-guide/</loc></url>
-  <url><loc>/blog/invoice-design-best-practices/</loc></url>
 </urlset>

@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Create your CreateInvoiceFast account to save invoices, track clients, and manage billing history.">
-  <meta name="theme-color" content="#22c55e">
-  <title>Sign Up | CreateInvoiceFast</title>
+  <meta name="description" content="Create an account to save invoices and track invoice history.">
+  <meta name="theme-color" content="#00b67a">
+  <title>Sign Up | Invoice-Generator Style</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="icon" href="/assets/img/createinvoicefast-logo.svg" type="image/svg+xml">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/assets/js/supabase-config.js" defer></script>
-  <script src="/assets/js/data.js" defer></script>
   <script src="/assets/js/site-supabase.js" defer></script>
 </head>
 <body data-page="signup">
@@ -18,28 +18,27 @@
       <div class="container nav">
         <a class="brand" href="/">
           <span class="brand-mark">C</span>
-          <span>CreateInvoiceFast</span>
+          <span>Invoice-Generator.com</span>
         </a>
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="/invoice/">Invoice Generator</a>
-          <a href="/dashboard/">Dashboard</a>
-          <a href="/blog/">Blog</a>
-          <a href="/about/">About</a>
-          <a href="/contact/">Contact</a>
+          <a href="/help/">Help</a>
+          <a href="/history/">History</a>
+          <a href="/guide/">Invoicing Guide</a>
         </nav>
         <div class="nav-actions">
           <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+          <a class="btn btn-ghost js-guest-nav" href="/login/">Sign In</a>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="section">
+      <section class="ig-page-section">
         <div class="container grid-2">
-          <div class="panel">
-            <div class="eyebrow">Create account</div>
-            <h1 style="font-size:clamp(2.2rem,4vw,4rem);margin:0">Start saving invoices under your own login.</h1>
-            <p class="lead">Use one account to track invoices, clients, and recurring billing work with a clean dashboard.</p>
+          <section class="ig-page-card">
+            <h1>Create Account</h1>
+            <p>Save invoices to your account and access them anytime from History.</p>
+
             <form class="form-grid" data-signup-form>
               <div class="field full">
                 <label for="signup-name">Full name</label>
@@ -54,29 +53,28 @@
                 <input id="signup-password" name="password" type="password" autocomplete="new-password" placeholder="At least 6 characters">
               </div>
               <div class="field full">
-                <button class="btn btn-primary" type="submit">Create account</button>
+                <button class="btn btn-primary" type="submit">Create Account</button>
               </div>
             </form>
-            <p class="footer-note">Already have an account? <a href="/login/">Log in here</a>.</p>
-          </div>
-          <div class="panel">
-            <div class="panel-header">
-              <h3>Account benefits</h3>
-              <span class="badge">Per user data</span>
-            </div>
-            <div class="grid-2">
-              <div class="info-card"><h3>Invoice history</h3><p>Keep past invoices organized in one place.</p></div>
-              <div class="info-card"><h3>Client list</h3><p>Reuse buyer information across multiple jobs.</p></div>
-              <div class="info-card"><h3>Edit previous work</h3><p>Update an old invoice instead of creating a duplicate.</p></div>
-              <div class="info-card"><h3>SEO blog access</h3><p>Use the blog to publish tips, guides, and updates.</p></div>
-            </div>
-          </div>
+
+            <p class="footer-note">Already have an account? <a href="/login/">Sign in here</a>.</p>
+          </section>
+
+          <aside class="ig-page-card">
+            <h2>With an account you can</h2>
+            <ul>
+              <li>Save invoices to cloud history</li>
+              <li>Edit invoices later</li>
+              <li>Track due and paid invoices</li>
+              <li>Reuse your invoice workflow faster</li>
+            </ul>
+          </aside>
         </div>
       </section>
     </main>
 
-    <footer class="footer no-print">
-      <div class="container footer-note">Copyright © <span class="js-year"></span> CreateInvoiceFast.</div>
+    <footer class="footer ig-footer">
+      <div class="container footer-note">Copyright © <span class="js-year"></span> Invoice-Generator.com</div>
     </footer>
   </div>
 </body>
