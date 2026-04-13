@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Template article page for a new CreateInvoiceFast blog post.">
+  <meta name="theme-color" content="#22c55e">
+  <title>Blog Template | CreateInvoiceFast</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/data.js" defer></script>
+  <script src="/assets/js/site-supabase.js" defer></script>
+</head>
+<body data-page="blog-article" data-slug="template">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/"><span class="brand-mark">C</span><span>CreateInvoiceFast</span></a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/invoice/">Invoice Generator</a>
+          <a href="/dashboard/">Dashboard</a>
+          <a href="/blog/">Blog</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="section">
+        <div class="container article-layout">
+          <article class="article-card">
+            <div class="post-meta"><span>Category</span><span>Read time</span><span>Date</span></div>
+            <h1 data-article-title>Template title goes here</h1>
+            <p class="lead" style="margin-top:0" data-article-meta>Category · Date · Read time</p>
+            <div class="content">
+              <p>Copy this folder to create a new blog post, then replace the title, description, and content with your article.</p>
+              <h2>Section heading</h2>
+              <p>Add your article body here.</p>
+            </div>
+            <div class="share-card social-card" style="margin-top:22px">
+              <div class="panel-header"><h3>Share this article</h3><span class="badge">Social</span></div>
+              <div class="share-row">
+                <button class="btn btn-secondary" data-share="whatsapp" type="button">WhatsApp</button>
+                <button class="btn btn-secondary" data-share="facebook" type="button">Facebook</button>
+                <button class="btn btn-secondary" data-share="reddit" type="button">Reddit</button>
+                <button class="btn btn-secondary" data-share="x" type="button">X</button>
+                <button class="btn btn-secondary" data-share="linkedin" type="button">LinkedIn</button>
+              </div>
+            </div>
+          </article>
+          <aside class="sidebar-stack">
+            <div class="social-card">
+              <div class="panel-header"><h3>Related posts</h3><span class="badge">More</span></div>
+              <div class="social-buttons" data-related-posts></div>
+            </div>
+            <div class="info-card">
+              <h3>Add a new article</h3>
+              <p>Use <span class="badge">/admin/</span> to create and manage blog posts, including cover images and publish status.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container footer-note">Copyright © <span class="js-year"></span> CreateInvoiceFast.</div>
+    </footer>
+  </div>
+</body>
+</html>
+
+

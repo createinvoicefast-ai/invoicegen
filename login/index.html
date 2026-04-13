@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Log in to access your personal invoice dashboard and saved client records.">
+  <meta name="theme-color" content="#22c55e">
+  <title>Login | CreateInvoiceFast</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/data.js" defer></script>
+  <script src="/assets/js/site-supabase.js" defer></script>
+</head>
+<body data-page="login">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/">
+          <span class="brand-mark">C</span>
+          <span>CreateInvoiceFast</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/invoice/">Invoice Generator</a>
+          <a href="/dashboard/">Dashboard</a>
+          <a href="/blog/">Blog</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container grid-2">
+          <div class="panel">
+            <div class="eyebrow">Welcome back</div>
+            <h1 style="font-size:clamp(2.2rem,4vw,4rem);margin:0">Sign in to your dashboard.</h1>
+            <p class="lead">Access your saved invoices, clients, and invoice drafts on this device.</p>
+            <form class="form-grid" data-login-form>
+              <div class="field full">
+                <label for="login-email">Email</label>
+                <input id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+              </div>
+              <div class="field full">
+                <label for="login-password">Password</label>
+                <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Your password">
+              </div>
+              <div class="field full">
+                <button class="btn btn-primary" type="submit">Login</button>
+              </div>
+            </form>
+            <p class="footer-note">Need an account? <a href="/signup/">Create one here</a>.</p>
+          </div>
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Why sign in</h3>
+              <span class="badge">Personal storage</span>
+            </div>
+            <div class="grid-2">
+              <div class="info-card"><h3>Saved invoices</h3><p>Keep a history of bills tied to your email account.</p></div>
+              <div class="info-card"><h3>Client records</h3><p>Reuse customer data without retyping details every time.</p></div>
+              <div class="info-card"><h3>Edit history</h3><p>Open old invoices and update them instead of starting over.</p></div>
+              <div class="info-card"><h3>Cleaner workflow</h3><p>Stay organized across billing, templates, and blog tasks.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer no-print">
+      <div class="container footer-note">Copyright © <span class="js-year"></span> CreateInvoiceFast.</div>
+    </footer>
+  </div>
+</body>
+</html>
+
+

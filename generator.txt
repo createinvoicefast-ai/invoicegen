@@ -1,0 +1,100 @@
+Here are the full requirements for the project:
+
+1. Design & UI:
+
+* Clean, modern, and professional UI
+* Use a green primary color (#22c55e)
+* Support both dark and light mode
+* Fully responsive (mobile, tablet, desktop)
+
+2. Core Features:
+
+* Invoice generator with dynamic fields
+* PDF download functionality
+* Auto calculations (subtotal, tax, total, etc.)
+  Example: https://invoice-generator.com/
+
+3. Templates:
+
+* Add multiple invoice templates (at least 3: modern, classic, minimal)
+* Allow users to preview and switch between templates before downloading
+  Example: https://invoicehome.com/
+
+4. User Accounts (IMPORTANT):
+
+* Add Login and Sign Up system
+* Each user should have a personal dashboard
+* Users can:
+
+  * View all invoices they created
+  * See their clients list
+  * Track invoice dates and details
+  * Manage and edit previous invoices
+* Data should be saved per user account
+
+5. Pages (IMPORTANT):
+
+Please make sure to create the following pages:
+
+* About page
+* Contact page
+* Privacy Policy page
+* Terms of Service page
+
+All pages should be properly designed, SEO-friendly, and accessible from the footer and/or navigation menu.
+
+6. Social Sharing:
+
+* Add share buttons for:
+
+  * WhatsApp
+  * Facebook
+  * Reddit
+  * Twitter (X)
+  * LinkedIn
+* Make them mobile-friendly and well-positioned
+
+7. SEO Optimization:
+
+* Proper HTML structure (headings, meta tags)
+* Fast loading speed
+* Clean URLs
+* Ready for Google indexing
+
+8. Performance:
+
+* Lightweight and fast (optimized CSS/JS)
+* No unnecessary libraries
+
+9. Ads Ready:
+
+* Structure the layout so it’s ready for AdSense placement later
+*For AdSense, I don't want ads visible now. Just structure the layout with placeholder areas so I can easily add ads later without breaking the design.
+
+10. Delivery:
+
+* Provide full source code (HTML, CSS, JS)
+* Provide a production-ready version for hosting
+* No errors or broken features
+* Ensure I have full ownership of the project
+
+If you need anything from my side (logo, content, email, etc.), let me know.
+
+Also, feel free to suggest improvements for better performance or user experience.
+
+Please make sure I have full ownership of the project, including all source code and assets.
+
+I just realized I forgot to mention something important.
+
+I’d like to add a Blog section to the website where I can publish articles (tips, guides, etc.) for SEO and Google AdSense.
+
+Please create:
+
+* A main /blog page listing all articles
+* Individual article pages (SEO-friendly URLs)
+* An easy way for me to add new articles in the future
+
+This will help bring organic traffic and improve monetization.
+
+Edited
+

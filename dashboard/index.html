@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal dashboard for saved invoices, tracked clients, and invoice history per account.">
+  <meta name="theme-color" content="#22c55e">
+  <title>Dashboard | CreateInvoiceFast</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/data.js" defer></script>
+  <script src="/assets/js/site-supabase.js" defer></script>
+</head>
+<body data-page="dashboard">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/">
+          <span class="brand-mark">C</span>
+          <span>CreateInvoiceFast</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/invoice/">Invoice Generator</a>
+          <a href="/dashboard/">Dashboard</a>
+          <a href="/blog/">Blog</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+          <a class="btn btn-ghost js-guest-nav" href="/login/">Login</a>
+          <a class="btn btn-primary js-guest-nav" href="/signup/">Sign Up</a>
+          <a class="btn btn-ghost js-auth-nav hidden" href="/dashboard/">Dashboard</a>
+          <button class="btn btn-primary js-auth-nav hidden js-sign-out" type="button">Sign Out</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-title">
+            <div>
+              <div class="eyebrow">Personal dashboard</div>
+              <h1>Manage invoices, clients, and billing history.</h1>
+              <p data-dashboard-summary-text>Track every invoice you create and return to previous drafts with one click.</p>
+            </div>
+            <div class="inline-actions no-print">
+              <a class="btn btn-primary" href="/invoice/">New invoice</a>
+              <button class="btn btn-secondary js-sign-out" type="button">Sign out</button>
+            </div>
+          </div>
+
+          <div class="dashboard-summary" data-dashboard-stats></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid-2" data-dashboard>
+          <section class="panel">
+            <div class="panel-header">
+              <h3>Invoices</h3>
+              <span class="badge">Editable history</span>
+            </div>
+            <div style="overflow:auto">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Invoice</th>
+                    <th>Client</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody data-dashboard-invoices>
+                  <tr><td colspan="6">Loading invoices...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h3>Clients</h3>
+              <span class="badge">Saved per account</span>
+            </div>
+            <div style="overflow:auto">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Client</th>
+                    <th>Address</th>
+                    <th>Last invoice</th>
+                    <th>Last date</th>
+                  </tr>
+                </thead>
+                <tbody data-dashboard-clients>
+                  <tr><td colspan="4">Loading clients...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid-2">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Account overview</h3>
+              <span class="badge js-auth-greeting">Welcome</span>
+            </div>
+            <p class="kicker">Signed in as <strong class="js-auth-name">Guest</strong> <span class="js-auth-email"></span>.</p>
+            <div class="inline-actions" style="margin-top:18px">
+              <a class="btn btn-secondary" href="/login/">Switch account</a>
+              <a class="btn btn-primary" href="/blog/">Read blog</a>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Quick links</h3>
+              <span class="badge">Shortcuts</span>
+            </div>
+            <p class="kicker">Jump back into billing or learn more about the product.</p>
+            <div class="inline-actions" style="margin-top:18px;flex-direction:column;align-items:stretch">
+              <a class="btn btn-primary" href="/invoice/">Create new invoice</a>
+              <a class="btn btn-secondary" href="/admin/">Manage blog posts</a>
+              <a class="btn btn-secondary" href="/">View marketing site</a>
+              <a class="btn btn-ghost" href="/contact/">Contact support</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer no-print">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="/"><span class="brand-mark">C</span><span>CreateInvoiceFast</span></a>
+          <p class="footer-note">Invoice history, client records, and billing templates saved per user account.</p>
+        </div>
+        <div>
+          <strong>Pages</strong>
+          <div class="footer-links">
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+          </div>
+        </div>
+        <div>
+          <strong>Resources</strong>
+          <div class="footer-links">
+            <a href="/invoice/">Invoice Generator</a>
+            <a href="/blog/">Blog</a>
+            <a href="/signup/">Create account</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-note">Copyright © <span class="js-year"></span> CreateInvoiceFast.</div>
+    </footer>
+  </div>
+</body>
+</html>
+
+

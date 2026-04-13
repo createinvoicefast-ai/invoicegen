@@ -1,0 +1,11 @@
+# Local env and secret files
+.env
+.env.*
+!.env.example
+
+# Keep the committed config keyless and use local private files if needed
+assets/js/supabase-config.local.js
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

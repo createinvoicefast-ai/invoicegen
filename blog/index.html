@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Read invoice, billing, and design articles on the CreateInvoiceFast blog.">
+  <meta name="theme-color" content="#22c55e">
+  <title>Blog | CreateInvoiceFast</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/data.js" defer></script>
+  <script src="/assets/js/site-supabase.js" defer></script>
+</head>
+<body data-page="blog-index">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/"><span class="brand-mark">C</span><span>CreateInvoiceFast</span></a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/invoice/">Invoice Generator</a>
+          <a href="/dashboard/">Dashboard</a>
+          <a href="/blog/">Blog</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+          <a class="btn btn-ghost js-guest-nav" href="/login/">Login</a>
+          <a class="btn btn-primary js-guest-nav" href="/signup/">Sign Up</a>
+          <a class="btn btn-ghost js-auth-nav hidden" href="/dashboard/">Dashboard</a>
+          <button class="btn btn-primary js-auth-nav hidden js-sign-out" type="button">Sign Out</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-title">
+            <div>
+              <div class="eyebrow">Blog</div>
+              <h1>Publishing-ready articles for SEO and AdSense.</h1>
+              <p>Use this section for billing advice, client communication guides, and niche content that helps organic growth.</p>
+            </div>
+          </div>
+          <div class="article-layout">
+            <div>
+              <div class="blog-grid" data-blog-list>
+                <article class="blog-card">
+                  <div class="thumb with-img"><img src="/assets/img/blog-pricing.svg" alt="Invoice pricing and billing strategy illustration" loading="lazy" decoding="async"></div>
+                  <div class="meta"><span>Billing</span><span>5 min read</span></div>
+                  <h3><a href="/blog/post/?slug=invoice-pricing-tips">7 Invoice Pricing Tips That Improve Cash Flow</a></h3>
+                  <p>Practical ways to present clearer invoices and get paid faster.</p>
+                </article>
+                <article class="blog-card">
+                  <div class="thumb with-img"><img src="/assets/img/blog-client-guide.svg" alt="Client invoicing workflow and process graphic" loading="lazy" decoding="async"></div>
+                  <div class="meta"><span>Operations</span><span>6 min read</span></div>
+                  <h3><a href="/blog/post/?slug=client-invoicing-guide">Client Invoicing Guide for Freelancers and Agencies</a></h3>
+                  <p>A simple framework for scope, line items, and payment terms.</p>
+                </article>
+                <article class="blog-card">
+                  <div class="thumb with-img"><img src="/assets/img/blog-design.svg" alt="Invoice layout and design best practices illustration" loading="lazy" decoding="async"></div>
+                  <div class="meta"><span>Design</span><span>4 min read</span></div>
+                  <h3><a href="/blog/post/?slug=invoice-design-best-practices">Invoice Design Best Practices for Trust and Clarity</a></h3>
+                  <p>Layout decisions that make invoices more professional and easier to pay.</p>
+                </article>
+              </div>
+            </div>
+            <div class="sidebar-stack">
+              <div class="social-card">
+                <div class="panel-header"><h3>Why the blog exists</h3><span class="badge">SEO</span></div>
+                <p>Articles help attract search traffic, educate clients, and build trust in your brand.</p>
+              </div>
+              <div class="info-card">
+                <h3>Adding new posts</h3>
+                <p>Use the admin panel to create, edit, publish, and manage blog cover images in one place.</p>
+                <a class="btn btn-secondary" href="/admin/" style="margin-top:12px;display:inline-flex">Open admin</a>
+              </div>
+              <div class="info-card">
+                <h3>Need an invoice now?</h3>
+                <p>Use the generator to build a PDF-ready document in your browser.</p>
+                <a class="btn btn-primary" href="/invoice/" style="margin-top:12px;display:inline-flex">Open generator</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="/"><span class="brand-mark">C</span><span>CreateInvoiceFast</span></a>
+          <p class="footer-note">SEO-friendly articles and guides for clearer billing and client relationships.</p>
+        </div>
+        <div>
+          <strong>Pages</strong>
+          <div class="footer-links">
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+          </div>
+        </div>
+        <div>
+          <strong>Resources</strong>
+          <div class="footer-links">
+            <a href="/invoice/">Invoice Generator</a>
+            <a href="/dashboard/">Dashboard</a>
+            <a href="/signup/">Create account</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-note">Copyright © <span class="js-year"></span> CreateInvoiceFast.</div>
+    </footer>
+  </div>
+</body>
+</html>
+
+

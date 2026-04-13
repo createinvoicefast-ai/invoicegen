@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create invoices with dynamic fields, calculations, templates, social sharing, and PDF-ready output.">
+  <meta name="theme-color" content="#22c55e">
+  <title>CreateInvoiceFast | Instant Invoice Creator</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="icon" href="/assets/img/createinvoicefast-logo.svg" type="image/svg+xml">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/data.js" defer></script>
+  <script src="/assets/js/site-supabase.js" defer></script>
+</head>
+<body data-page="invoice">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/">
+          <span class="brand-mark">C</span>
+          <span>CreateInvoiceFast</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/invoice/">Invoice Creator</a>
+          <a href="/dashboard/">Dashboard</a>
+          <a href="/blog/">Blog</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+          <a class="btn btn-ghost js-guest-nav" href="/login/">Login</a>
+          <a class="btn btn-primary js-guest-nav" href="/signup/">Sign Up</a>
+          <a class="btn btn-ghost js-auth-nav hidden" href="/dashboard/">Dashboard</a>
+          <button class="btn btn-primary js-auth-nav hidden js-sign-out" type="button">Sign Out</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section invoice-stage">
+        <div class="invoice-stage-layout">
+          <aside class="ad-slot ad-slot-vertical no-print" data-ad-slot="left" aria-label="Left ad placement">
+            <p class="ad-slot-kicker">Left Sidebar</p>
+            <strong>300 x 600</strong>
+            <p>Add ad script, image, or iframe for your client campaigns.</p>
+          </aside>
+
+          <div class="container invoice-stage-core">
+            <div class="section-title">
+              <div>
+                <div class="eyebrow">Invoice creator</div>
+                <h1 data-invoice-title>Create a new invoice</h1>
+                <p>Build, preview, and export a polished invoice in one place. Switch templates before downloading the PDF version.</p>
+              </div>
+              <div class="inline-actions no-print">
+                <button class="btn btn-secondary" data-reset-draft type="button">Reset draft</button>
+                <button class="btn btn-primary" data-save-invoice type="button">Save invoice</button>
+                <a class="btn btn-secondary" href="/dashboard/">Open dashboard</a>
+              </div>
+            </div>
+
+            <div class="grid-2 print-area">
+              <section class="panel no-print">
+                <div class="panel-header">
+                  <h3>Invoice fields</h3>
+                  <span class="badge">Dynamic form</span>
+                </div>
+                <form class="form-grid" data-invoice-form>
+                  <div class="field">
+                    <label for="companyName">Company name</label>
+                    <input id="companyName" name="companyName" placeholder="Your business name">
+                  </div>
+                  <div class="field">
+                    <label for="companyEmail">Company email</label>
+                    <input id="companyEmail" name="companyEmail" type="email" placeholder="billing@company.com">
+                  </div>
+                  <div class="field full">
+                    <label for="companyAddress">Company address</label>
+                    <input id="companyAddress" name="companyAddress" placeholder="Street address, city, country">
+                  </div>
+                  <div class="field full invoice-logo-field">
+                    <label for="invoiceLogo">Company logo (optional)</label>
+                    <input id="invoiceLogo" type="file" accept="image/*" data-logo-upload>
+                    <div class="inline-actions">
+                      <button class="btn btn-ghost" data-clear-logo type="button">Remove logo</button>
+                      <span class="field-hint" data-logo-status>No logo selected</span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="clientName">Client name</label>
+                    <input id="clientName" name="clientName" placeholder="Client or company name">
+                  </div>
+                  <div class="field">
+                    <label for="clientEmail">Client email</label>
+                    <input id="clientEmail" name="clientEmail" type="email" placeholder="client@example.com">
+                  </div>
+                  <div class="field full">
+                    <label for="clientAddress">Client address</label>
+                    <input id="clientAddress" name="clientAddress" placeholder="Client billing address">
+                  </div>
+                  <div class="field full">
+                    <label for="shipTo">Ship to (optional)</label>
+                    <input id="shipTo" name="shipTo" placeholder="Shipping destination if different from billing address">
+                  </div>
+                  <div class="field">
+                    <label for="invoiceNumber">Invoice number</label>
+                    <input id="invoiceNumber" name="invoiceNumber" placeholder="INV-2026-001">
+                  </div>
+                  <div class="field">
+                    <label for="projectName">Project / service</label>
+                    <input id="projectName" name="projectName" placeholder="Brand strategy and design">
+                  </div>
+                  <div class="field">
+                    <label for="issueDate">Issue date</label>
+                    <input id="issueDate" name="issueDate" type="date">
+                  </div>
+                  <div class="field">
+                    <label for="dueDate">Due date</label>
+                    <input id="dueDate" name="dueDate" type="date">
+                  </div>
+                  <div class="field">
+                    <label for="paymentTerms">Payment terms</label>
+                    <input id="paymentTerms" name="paymentTerms" placeholder="Net 15, Net 30, upon receipt">
+                  </div>
+                  <div class="field">
+                    <label for="poNumber">PO number</label>
+                    <input id="poNumber" name="poNumber" placeholder="Purchase order reference">
+                  </div>
+                  <div class="field">
+                    <label for="currency">Currency</label>
+                    <select id="currency" name="currency">
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="GBP">GBP</option>
+                      <option value="CAD">CAD</option>
+                      <option value="AUD">AUD</option>
+                      <option value="AED">AED</option>
+                      <option value="SAR">SAR</option>
+                      <option value="INR">INR</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="taxRate">Tax rate (%)</label>
+                    <input id="taxRate" name="taxRate" type="number" min="0" step="0.01">
+                  </div>
+                  <div class="field">
+                    <label for="discount">Discount amount</label>
+                    <input id="discount" name="discount" type="number" min="0" step="0.01" placeholder="Optional discount amount">
+                  </div>
+                  <div class="field">
+                    <label for="shipping">Shipping amount</label>
+                    <input id="shipping" name="shipping" type="number" min="0" step="0.01" placeholder="Optional shipping charge">
+                  </div>
+                  <div class="field">
+                    <label for="amountPaid">Amount paid</label>
+                    <input id="amountPaid" name="amountPaid" type="number" min="0" step="0.01" placeholder="Optional paid amount">
+                  </div>
+                  <div class="field">
+                    <label for="status">Status</label>
+                    <select id="status" name="status">
+                      <option value="draft">Draft</option>
+                      <option value="due">Due</option>
+                      <option value="paid">Paid</option>
+                    </select>
+                  </div>
+                  <div class="field full">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes" placeholder="Payment terms, thank-you note, or extra instructions"></textarea>
+                  </div>
+                  <div class="field full">
+                    <div class="panel-header" style="margin-bottom:10px">
+                      <h3>Line items</h3>
+                      <button class="btn btn-secondary" data-add-item type="button">Add item</button>
+                    </div>
+                    <div class="items-list" data-items-list></div>
+                  </div>
+                </form>
+              </section>
+
+              <section class="template-switcher">
+                <div class="panel no-print">
+                  <div class="panel-header">
+                    <h3>Template preview</h3>
+                    <span class="badge">Before download</span>
+                  </div>
+                  <div class="template-tabs" data-template-tabs></div>
+                  <p class="kicker" style="margin-top:14px">Pick the look that best fits the client. The content and totals stay synchronized while the style changes.</p>
+                </div>
+                <div class="template-preview">
+                  <div class="invoice-preview" data-invoice-preview></div>
+                </div>
+                <div class="panel no-print invoice-export-panel">
+                  <div class="panel-header">
+                    <h3>Download options</h3>
+                    <span class="badge">PDF PNG JSON CSV</span>
+                  </div>
+                  <div class="invoice-download-grid">
+                    <button class="btn btn-primary" data-download-pdf type="button">Download PDF</button>
+                    <button class="btn btn-secondary" data-download-print type="button">Print invoice</button>
+                    <button class="btn btn-secondary" data-download-png type="button">Download PNG</button>
+                    <button class="btn btn-secondary" data-download-json type="button">Download JSON</button>
+                    <button class="btn btn-secondary" data-download-csv type="button">Download CSV</button>
+                  </div>
+                </div>
+                <div class="social-card no-print">
+                  <div class="panel-header">
+                    <h3>Share invoice</h3>
+                    <span class="badge">Mobile friendly</span>
+                  </div>
+                  <div class="share-row">
+                    <button class="btn btn-secondary" data-share="whatsapp" type="button">WhatsApp</button>
+                    <button class="btn btn-secondary" data-share="facebook" type="button">Facebook</button>
+                    <button class="btn btn-secondary" data-share="reddit" type="button">Reddit</button>
+                    <button class="btn btn-secondary" data-share="x" type="button">X</button>
+                    <button class="btn btn-secondary" data-share="linkedin" type="button">LinkedIn</button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <aside class="ad-slot ad-slot-vertical no-print" data-ad-slot="right" aria-label="Right ad placement">
+            <p class="ad-slot-kicker">Right Sidebar</p>
+            <strong>300 x 600</strong>
+            <p>Use this slot for sponsor banners, Adsense blocks, or affiliate ads.</p>
+          </aside>
+        </div>
+
+        <div class="container no-print">
+          <div class="ad-slot ad-slot-banner" data-ad-slot="bottom" aria-label="Bottom ad placement">
+            <p class="ad-slot-kicker">Bottom Banner</p>
+            <strong>970 x 90</strong>
+            <p>Optional horizontal ad placement under the invoice editor.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer no-print">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="/"><span class="brand-mark">C</span><span>CreateInvoiceFast</span></a>
+          <p class="footer-note">Save invoices to your account, keep track of clients, and export clean PDF-ready billing documents.</p>
+        </div>
+        <div>
+          <strong>Pages</strong>
+          <div class="footer-links">
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+          </div>
+        </div>
+        <div>
+          <strong>Resources</strong>
+          <div class="footer-links">
+            <a href="/dashboard/">Dashboard</a>
+            <a href="/blog/">Blog</a>
+            <a href="/signup/">Create account</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-note">Copyright © <span class="js-year"></span> CreateInvoiceFast.</div>
+    </footer>
+  </div>
+</body>
+</html>
+
+

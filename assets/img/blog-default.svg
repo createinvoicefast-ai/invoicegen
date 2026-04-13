@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Blog default cover">
+  <defs>
+    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14532d"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g4)"/>
+  <rect x="120" y="118" width="960" height="440" rx="30" fill="#ecfdf5" opacity="0.92"/>
+  <rect x="180" y="204" width="840" height="28" rx="10" fill="#166534" opacity="0.82"/>
+  <rect x="180" y="258" width="690" height="18" rx="8" fill="#15803d" opacity="0.64"/>
+  <rect x="180" y="292" width="740" height="18" rx="8" fill="#15803d" opacity="0.48"/>
+  <text x="600" y="440" fill="#14532d" font-family="Sora, Arial, sans-serif" font-size="44" font-weight="700" text-anchor="middle">CreateInvoiceFast Blog</text>
+</svg>

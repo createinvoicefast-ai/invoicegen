@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact CreateInvoiceFast for project questions, customization requests, and billing website support.">
+  <meta name="theme-color" content="#22c55e">
+  <title>Contact | CreateInvoiceFast</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/supabase-config.js" defer></script>
+  <script src="/assets/js/data.js" defer></script>
+  <script src="/assets/js/site-supabase.js" defer></script>
+</head>
+<body data-page="contact">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/"><span class="brand-mark">C</span><span>CreateInvoiceFast</span></a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/invoice/">Invoice Generator</a>
+          <a href="/dashboard/">Dashboard</a>
+          <a href="/blog/">Blog</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☼</button>
+          <a class="btn btn-ghost js-guest-nav" href="/login/">Login</a>
+          <a class="btn btn-primary js-guest-nav" href="/signup/">Sign Up</a>
+          <a class="btn btn-ghost js-auth-nav hidden" href="/dashboard/">Dashboard</a>
+          <button class="btn btn-primary js-auth-nav hidden js-sign-out" type="button">Sign Out</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="section">
+        <div class="container grid-2">
+          <div class="panel">
+            <div class="eyebrow">Contact</div>
+            <h1 style="font-size:clamp(2.2rem,4vw,4rem);margin:0">Send a message.</h1>
+            <p class="lead">Use the form below to open your email app with a prepared message.</p>
+            <form class="form-grid" data-contact-form>
+              <div class="field full">
+                <label for="contact-name">Name</label>
+                <input id="contact-name" name="name" placeholder="Your name">
+              </div>
+              <div class="field full">
+                <label for="contact-email">Email</label>
+                <input id="contact-email" name="email" type="email" placeholder="you@example.com">
+              </div>
+              <div class="field full">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" placeholder="Tell us what you need..."></textarea>
+              </div>
+              <div class="field full">
+                <button class="btn btn-primary" type="submit">Send message</button>
+              </div>
+            </form>
+          </div>
+          <div class="sidebar-stack">
+            <div class="contact-card">
+              <div class="panel-header"><h3>Contact details</h3><span class="badge">Direct</span></div>
+              <div class="contact-list">
+                <a href="mailto:hello@example.com"><span>✉</span><span>hello@example.com</span></a>
+                <a href="tel:+15551202026"><span>☎</span><span>+1 (555) 120-2026</span></a>
+                <div><span>⌂</span><span>San Francisco, CA</span></div>
+              </div>
+            </div>
+            <div class="info-card">
+              <h3>Need a custom version?</h3>
+              <p>Share your logo, brand colors, and copy if you want me to tailor the site to your business.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container footer-note">Copyright © <span class="js-year"></span> CreateInvoiceFast.</div>
+    </footer>
+  </div>
+</body>
+</html>
+
+
