@@ -329,15 +329,15 @@ body[data-page='invoice'] .badge {
 
 body[data-page='invoice'] .btn-primary,
 body[data-page='invoice'] .template-tab.is-active {
-  background: #2f5ca8;
-  border-color: #2f5ca8;
+  background: var(--primary);
+  border-color: var(--primary);
   color: #ffffff;
 }
 
 body[data-page='invoice'] .btn-primary:hover,
 body[data-page='invoice'] .template-tab.is-active:hover {
-  background: #224a8f;
-  border-color: #224a8f;
+  background: var(--primary-strong);
+  border-color: var(--primary-strong);
 }
 
 body[data-page='invoice'] .invoice-preview .line-table th {
@@ -2738,8 +2738,8 @@ html[data-theme='dark'] .landing-tag-process {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: #ffffff;
-  border-bottom: 1px solid #dbe1ea;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
   backdrop-filter: none;
   box-shadow: none;
 }
@@ -2768,15 +2768,15 @@ html[data-theme='dark'] .landing-tag-process {
 .nav-links a {
   padding: 8px 12px;
   border-radius: 8px;
-  color: #5b6679;
+  color: var(--muted);
   background: transparent;
   font-weight: 600;
 }
 
 .nav-links a:hover,
 .nav-links a.is-active {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: var(--bg-soft);
+  color: var(--text);
   box-shadow: none;
 }
 
@@ -2790,24 +2790,25 @@ html[data-theme='dark'] .landing-tag-process {
 .icon-btn {
   width: 40px;
   height: 40px;
-  border-color: #dbe1ea;
+  border-color: var(--border);
   box-shadow: none;
 }
 
 .btn-primary {
-  background: #00b67a;
-  border-color: #00b67a;
+  background: var(--primary);
+  border-color: var(--primary);
   box-shadow: none;
 }
 
 .btn-primary:hover {
-  background: #059669;
-  border-color: #059669;
+  background: var(--primary-strong);
+  border-color: var(--primary-strong);
 }
 
 .btn-secondary {
-  background: #ffffff;
-  border-color: #dbe1ea;
+  background: var(--bg-elevated);
+  border-color: var(--border);
+  color: var(--text);
 }
 
 body[data-page='invoice'] {
@@ -3218,8 +3219,8 @@ body[data-page='invoice'] .ig-settings-card select:focus {
 }
 
 .ig-footer.footer {
-  background: #ffffff;
-  border-top: 1px solid #dbe1ea;
+  background: color-mix(in srgb, var(--bg-elevated) 94%, transparent);
+  border-top: 1px solid var(--border);
 }
 
 .ig-footer .footer-grid {
@@ -3238,8 +3239,8 @@ body[data-page='invoice'] .ig-settings-card select:focus {
 }
 
 .ig-page-card {
-  background: #ffffff;
-  border: 1px solid #dbe1ea;
+  background: color-mix(in srgb, var(--bg-elevated) 96%, transparent);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 24px;
   box-shadow: var(--shadow-soft);
@@ -3259,7 +3260,7 @@ body[data-page='invoice'] .ig-settings-card select:focus {
 
 .ig-page-card p,
 .ig-page-card li {
-  color: #334155;
+  color: var(--text);
 }
 
 .ig-faq {
@@ -3268,10 +3269,10 @@ body[data-page='invoice'] .ig-settings-card select:focus {
 }
 
 .ig-faq details {
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 12px 14px;
-  background: #f8fafc;
+  background: color-mix(in srgb, var(--bg-soft) 80%, var(--bg-elevated));
 }
 
 .ig-faq summary {
@@ -3600,7 +3601,7 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 
 .ig-pdf-note-block h3 {
   margin: 0;
-  color: #98a3b5;
+  color: #6b7280;
   font-size: 24px;
   font-weight: 500;
 }
