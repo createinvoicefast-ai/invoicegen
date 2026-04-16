@@ -2812,11 +2812,15 @@ html[data-theme='dark'] .landing-tag-process {
 }
 
 body[data-page='invoice'] {
-  background: #eef2f6;
+  background:
+    radial-gradient(circle at 12% -8%, rgba(34, 197, 94, 0.2), transparent 32%),
+    radial-gradient(circle at 88% -12%, rgba(16, 185, 129, 0.16), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(52, 211, 153, 0.08), transparent 42%),
+    var(--bg);
 }
 
 body[data-page='invoice']::before {
-  display: none;
+  display: block;
 }
 
 body[data-page='invoice'] h1,
@@ -2933,6 +2937,12 @@ body[data-page='invoice'] h4 {
 
 .ig-row-top {
   grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  align-items: start;
+}
+
+.ig-row-top > .ig-input-block {
+  gap: 4px;
+  align-content: start;
 }
 
 .ig-row-parties {
@@ -3093,7 +3103,7 @@ body[data-page='invoice'] .ig-settings-card select:focus {
 
 .ig-notes-col {
   display: grid;
-  gap: 14px;
+  gap: 8px;
 }
 
 .ig-summary-col {
@@ -3289,53 +3299,57 @@ body[data-page='invoice'] .ig-settings-card select:focus {
 }
 
 html[data-theme='dark'] body[data-page='invoice'] {
-  background: #070d16;
+  background:
+    radial-gradient(circle at 12% -8%, rgba(34, 197, 94, 0.22), transparent 32%),
+    radial-gradient(circle at 88% -12%, rgba(16, 185, 129, 0.18), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(52, 211, 153, 0.1), transparent 42%),
+    #07110b;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .topbar {
-  background: rgba(7, 13, 22, 0.86);
-  border-bottom-color: #1f2b3e;
+  background: rgba(9, 19, 13, 0.88);
+  border-bottom-color: #243a2d;
   box-shadow: none;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .brand,
 html[data-theme='dark'] body[data-page='invoice'] .nav-links a {
-  color: #cbd5e1;
+  color: #d7e7dd;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .nav-links a:hover,
 html[data-theme='dark'] body[data-page='invoice'] .nav-links a.is-active {
-  background: #111a2c;
-  color: #f8fafc;
+  background: #122218;
+  color: #f3faf6;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .icon-btn,
 html[data-theme='dark'] body[data-page='invoice'] .btn-secondary,
 html[data-theme='dark'] body[data-page='invoice'] .btn-ghost {
-  background: #111a2c;
-  border-color: #304158;
-  color: #e2e8f0;
+  background: #102016;
+  border-color: #2f4a3a;
+  color: #e5f3ea;
   box-shadow: none;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .btn-secondary:hover,
 html[data-theme='dark'] body[data-page='invoice'] .btn-ghost:hover,
 html[data-theme='dark'] body[data-page='invoice'] .icon-btn:hover {
-  background: #16243a;
-  border-color: #3f526c;
+  background: #163125;
+  border-color: #3f624d;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-sheet,
 html[data-theme='dark'] body[data-page='invoice'] .ig-settings-card,
 html[data-theme='dark'] body[data-page='invoice'] .ig-footer.footer {
-  background: #0c1525;
-  border-color: #24344a;
+  background: #0d1711;
+  border-color: #284032;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-settings-toggle {
-  background: #0c1525;
-  color: #f1f5f9;
+  background: #0d1711;
+  color: #eef7f2;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-doc-title h1,
@@ -3346,62 +3360,62 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-input-row label,
 html[data-theme='dark'] body[data-page='invoice'] .ig-input-block > span,
 html[data-theme='dark'] body[data-page='invoice'] .ig-meta-grid label > span,
 html[data-theme='dark'] body[data-page='invoice'] .ig-textarea-block > span {
-  color: #e5edf7;
+  color: #e3f0e8;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-setting-field > span,
 html[data-theme='dark'] body[data-page='invoice'] .footer-note {
-  color: #9fb1ca;
+  color: #9bb8a8;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-logo-box {
-  background: #101b2f;
-  border-color: #304158;
-  color: #9fb1ca;
+  background: #102017;
+  border-color: #2f4a3a;
+  color: #9bb8a8;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-doc-number,
 html[data-theme='dark'] body[data-page='invoice'] .ig-money-input,
 html[data-theme='dark'] body[data-page='invoice'] .ig-remove-item {
-  background: #111a2c;
-  border-color: #304158;
-  color: #e2e8f0;
+  background: #122218;
+  border-color: #2f4a3a;
+  color: #e5f3ea;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-doc-number span,
 html[data-theme='dark'] body[data-page='invoice'] .ig-money-input span {
-  color: #a8bdd8;
+  color: #aac7b7;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-sheet input,
 html[data-theme='dark'] body[data-page='invoice'] .ig-sheet select,
 html[data-theme='dark'] body[data-page='invoice'] .ig-sheet textarea,
 html[data-theme='dark'] body[data-page='invoice'] .ig-settings-card select {
-  background: #111a2c;
-  border-color: #304158;
-  color: #e2e8f0;
+  background: #122218;
+  border-color: #2f4a3a;
+  color: #e5f3ea;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-sheet input:focus,
 html[data-theme='dark'] body[data-page='invoice'] .ig-sheet select:focus,
 html[data-theme='dark'] body[data-page='invoice'] .ig-sheet textarea:focus,
 html[data-theme='dark'] body[data-page='invoice'] .ig-settings-card select:focus {
-  border-color: #4b6282;
-  box-shadow: 0 0 0 3px rgba(75, 98, 130, 0.32);
+  border-color: #4e7861;
+  box-shadow: 0 0 0 3px rgba(78, 120, 97, 0.32);
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-items-table th {
-  background: #101c30;
-  color: #f8fafc;
+  background: #143224;
+  color: #f3faf6;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-items-table td,
 html[data-theme='dark'] body[data-page='invoice'] .ig-summary-row {
-  border-bottom-color: #24344a;
+  border-bottom-color: #284032;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-summary-total {
-  border-top-color: #304158;
+  border-top-color: #2f4a3a;
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
@@ -3418,9 +3432,9 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 }
 
 .ig-pdf-page {
-  width: 920px;
-  min-height: 1298px;
-  padding: 64px 70px 60px;
+  width: 900px;
+  min-height: 1270px;
+  padding: 46px 52px 42px;
   background: #ffffff;
   border: 1px solid #dde4ef;
   color: #111827;
@@ -3431,19 +3445,19 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 64px;
-  margin-bottom: 52px;
+  gap: 38px;
+  margin-bottom: 34px;
 }
 
 .ig-pdf-brand-col {
-  width: 230px;
+  width: 210px;
   display: grid;
-  gap: 14px;
+  gap: 10px;
 }
 
 .ig-pdf-logo {
-  width: 124px;
-  height: 124px;
+  width: 100px;
+  height: 100px;
   border: 1px solid #d4dce9;
   border-radius: 8px;
   background: #f8fbff;
@@ -3451,7 +3465,7 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   align-items: center;
   justify-content: center;
   color: #6b7f9a;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
 }
 
@@ -3465,10 +3479,10 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 
 .ig-pdf-company {
   margin: 0;
-  min-height: 42px;
+  min-height: 32px;
   color: #4b5563;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .ig-pdf-doc-col {
@@ -3480,84 +3494,84 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 .ig-pdf-doc-col h1 {
   margin: 0;
   color: #111827;
-  font-size: 58px;
-  line-height: 0.94;
+  font-size: 46px;
+  line-height: 0.95;
   letter-spacing: 0.03em;
 }
 
 .ig-pdf-doc-number {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: #93a0b5;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 500;
 }
 
 .ig-pdf-meta {
-  margin: 42px 0 0;
+  margin: 26px 0 0;
   padding: 0;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .ig-pdf-meta div {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  gap: 26px;
+  gap: 18px;
 }
 
 .ig-pdf-meta dt {
   color: #7b879a;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .ig-pdf-meta dd {
   margin: 0;
-  min-width: 180px;
+  min-width: 150px;
   text-align: right;
   color: #1f2937;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 600;
 }
 
 .ig-pdf-party-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 52px;
-  margin-bottom: 34px;
+  gap: 30px;
+  margin-bottom: 24px;
 }
 
 .ig-pdf-party-grid h2 {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   color: #8b98ac;
-  font-size: 27px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 
 .ig-pdf-party-grid p {
   margin: 0;
-  min-height: 34px;
+  min-height: 28px;
   color: #111827;
-  font-size: 24px;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .ig-pdf-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .ig-pdf-table th {
   background: #26292f;
   color: #ffffff;
   text-align: left;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
-  padding: 14px 18px;
+  padding: 10px 12px;
 }
 
 .ig-pdf-table th:nth-child(n + 2) {
@@ -3565,10 +3579,11 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 }
 
 .ig-pdf-table td {
-  padding: 12px 18px;
+  padding: 9px 12px;
   border-bottom: 1px solid #e5ebf3;
   color: #1f2937;
-  font-size: 20px;
+  font-size: 13px;
+  line-height: 1.4;
   vertical-align: top;
 }
 
@@ -3580,7 +3595,7 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 .ig-pdf-overflow {
   text-align: center;
   color: #64748b;
-  font-size: 16px;
+  font-size: 13px;
   font-style: italic;
 }
 
@@ -3590,33 +3605,33 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 
 .ig-pdf-bottom {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
-  gap: 42px;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 28px;
 }
 
 .ig-pdf-notes-col {
   display: grid;
-  gap: 34px;
+  gap: 14px;
 }
 
 .ig-pdf-note-block h3 {
   margin: 0;
   color: #6b7280;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .ig-pdf-note-block p {
-  margin: 10px 0 0;
-  min-height: 86px;
+  margin: 6px 0 0;
+  min-height: 54px;
   color: #4b5563;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 12.5px;
+  line-height: 1.5;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  line-clamp: 6;
-  -webkit-line-clamp: 6;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
 }
 
 .ig-pdf-note-compact p {
@@ -3628,7 +3643,7 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 
 .ig-pdf-summary-col {
   display: grid;
-  gap: 10px;
+  gap: 6px;
   align-content: start;
 }
 
@@ -3636,9 +3651,9 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 14px;
+  gap: 10px;
   color: #1f2937;
-  font-size: 22px;
+  font-size: 14px;
   line-height: 1.4;
 }
 
@@ -3647,31 +3662,47 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 }
 
 .ig-pdf-summary-total {
-  margin-top: 8px;
-  padding-top: 12px;
+  margin-top: 6px;
+  padding-top: 8px;
   border-top: 2px solid #cfd9e7;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .ig-pdf-summary-total strong {
-  font-size: 34px;
+  font-size: 22px;
 }
 
 .ig-pdf-balance-row {
-  margin-top: 10px;
-  padding-top: 12px;
+  margin-top: 8px;
+  padding-top: 9px;
   border-top: 1px solid #dde4ef;
   color: #16a34a;
-  font-size: 30px;
+  font-size: 21px;
   font-weight: 700;
 }
 
 .ig-pdf-balance-row strong {
   color: #16a34a;
-  font-size: 38px;
+  font-size: 23px;
 }
 
 @media (max-width: 1120px) {
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    min-height: auto;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+  }
+
   .ig-layout {
     grid-template-columns: 1fr;
   }
@@ -3692,12 +3723,62 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 }
 
 @media (max-width: 760px) {
+  body[data-page='invoice'] {
+    overflow-x: clip;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    min-height: auto;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand span:last-child {
+    font-size: 0.92rem;
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .nav-links a {
+    white-space: nowrap;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  .nav-actions .btn,
+  .nav-actions .icon-btn {
+    min-height: 38px;
+  }
+
+  body[data-page='invoice'] .ig-main {
+    padding-top: 14px;
+  }
+
   .ig-stage {
     width: min(100% - 14px, 100%);
   }
 
   .ig-sheet {
-    padding: 14px;
+    padding: 12px;
   }
 
   .ig-sheet-head,
@@ -3719,15 +3800,18 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
     width: 100%;
   }
 
-  .ig-items-table {
-    display: block;
+  .ig-items-wrap {
     overflow-x: auto;
-    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .ig-items-table thead,
-  .ig-items-table tbody,
-  .ig-items-table tr {
+  .ig-items-table {
+    min-width: 620px;
+    margin-bottom: 8px;
+  }
+
+  .ig-items-table th,
+  .ig-items-table td {
     white-space: nowrap;
   }
 

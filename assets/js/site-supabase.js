@@ -182,11 +182,13 @@
     });
   };
 
+  const brandLabel = 'Invoice Generator';
+
   const normalizeHeaderChrome = () => {
     $$('.brand').forEach((brand) => {
       const spans = brand.querySelectorAll('span');
       const label = spans[spans.length - 1];
-      if (label) label.textContent = 'Invoice-Generator.com';
+      if (label) label.textContent = brandLabel;
     });
 
     $$('.nav-links').forEach((nav) => {
@@ -375,7 +377,7 @@
       ? draft.items
       : [{ description: 'Item', quantity: 1, rate: 0 }];
 
-    const maxPdfRows = 7;
+    const maxPdfRows = 6;
     const visibleItems = items.slice(0, maxPdfRows);
 
     const rowsMarkup = visibleItems.map((item) => {
@@ -462,14 +464,12 @@
             <h3>Terms</h3>
             <p>${safeText(draft.terms, '&nbsp;')}</p>
           </div>
-          <div class="ig-pdf-note-block ig-pdf-note-compact">
-            <h3>Shipping</h3>
-            <p>${money(totals.shipping, draft.currency)}</p>
-          </div>
         </div>
         <div class="ig-pdf-summary-col">
           <div class="ig-pdf-summary-row"><span>Subtotal</span><strong>${money(totals.subtotal, draft.currency)}</strong></div>
+          <div class="ig-pdf-summary-row"><span>Discount</span><strong>- ${money(totals.discount, draft.currency)}</strong></div>
           <div class="ig-pdf-summary-row"><span>Tax (${escapeHTML(taxRateText)}%)</span><strong>${money(totals.tax, draft.currency)}</strong></div>
+          <div class="ig-pdf-summary-row"><span>Shipping</span><strong>${money(totals.shipping, draft.currency)}</strong></div>
           <div class="ig-pdf-summary-row ig-pdf-summary-total"><span>Total</span><strong>${money(totals.total, draft.currency)}</strong></div>
           <div class="ig-pdf-summary-row"><span>Amount Paid</span><strong>${money(totals.amountPaid, draft.currency)}</strong></div>
           <div class="ig-pdf-summary-row ig-pdf-balance-row"><span>Balance Due</span><strong>${money(totals.balanceDue, draft.currency)}</strong></div>
