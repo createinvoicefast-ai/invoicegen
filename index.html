@@ -41,11 +41,14 @@
         <div class="ig-layout">
           <form class="ig-sheet" data-invoice-form data-invoice-preview>
             <div class="ig-sheet-head">
-              <label class="ig-logo-box" for="invoiceLogo">
-                <input id="invoiceLogo" type="file" accept="image/*" data-logo-upload>
-                <img class="ig-logo-preview hidden" data-logo-preview alt="Company logo preview">
-                <span data-logo-placeholder>+ Add Your Logo</span>
-              </label>
+              <div class="ig-logo-field">
+                <label class="ig-logo-box" for="invoiceLogo">
+                  <input id="invoiceLogo" type="file" accept="image/*" data-logo-upload>
+                  <img class="ig-logo-preview hidden" data-logo-preview alt="Company logo preview">
+                  <span data-logo-placeholder>+ Add Your Logo</span>
+                </label>
+                <button class="ig-clear-logo-btn hidden" type="button" data-clear-logo>Remove logo</button>
+              </div>
               <div class="ig-doc-title">
                 <h1>INVOICE</h1>
                 <label class="ig-doc-number">

@@ -2864,8 +2864,14 @@ body[data-page='invoice'] h4 {
   margin-bottom: 20px;
 }
 
-.ig-logo-box {
+.ig-logo-field {
   width: min(100%, 200px);
+  display: grid;
+  gap: 8px;
+}
+
+.ig-logo-box {
+  width: 100%;
   min-height: 130px;
   border: 1px dashed #c9d1de;
   border-radius: 8px;
@@ -2892,6 +2898,43 @@ body[data-page='invoice'] h4 {
   object-fit: contain;
   padding: 10px;
   background: #ffffff;
+}
+
+.ig-clear-logo-btn {
+  align-self: start;
+  border: 1px solid #d8dee8;
+  background: #ffffff;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: left;
+  padding: 6px 12px;
+  border-radius: 8px;
+  line-height: 1.1;
+  cursor: pointer;
+}
+
+.ig-clear-logo-btn:hover {
+  background: #f8fafc;
+  border-color: #c9d1de;
+  color: #0f172a;
+}
+
+.ig-clear-logo-btn:focus-visible {
+  outline: 2px solid #0f172a;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-clear-logo-btn {
+  background: #122218;
+  border-color: #2f4a3a;
+  color: #e5f3ea;
+}
+
+html[data-theme='dark'] body[data-page='invoice'] .ig-clear-logo-btn:hover {
+  background: #163125;
+  border-color: #3f624d;
 }
 
 .ig-doc-title {
@@ -3857,6 +3900,10 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
     margin-bottom: 14px;
   }
 
+  .ig-logo-field {
+    width: 100%;
+  }
+
   .ig-logo-box {
     width: 100%;
     min-height: 108px;
@@ -4069,6 +4116,10 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   .ig-sheet-head {
     gap: 12px;
     margin-bottom: 14px;
+  }
+
+  .ig-logo-field {
+    width: 100%;
   }
 
   .ig-logo-box {

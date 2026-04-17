@@ -723,6 +723,7 @@
   const renderLogo = (draft) => {
     const preview = $('[data-logo-preview]');
     const placeholder = $('[data-logo-placeholder]');
+    const clearButton = $('[data-clear-logo]');
 
     if (preview) {
       if (draft.logoDataUrl) {
@@ -736,6 +737,10 @@
 
     if (placeholder) {
       placeholder.classList.toggle('hidden', Boolean(draft.logoDataUrl));
+    }
+
+    if (clearButton) {
+      clearButton.classList.toggle('hidden', !draft.logoDataUrl);
     }
   };
 
