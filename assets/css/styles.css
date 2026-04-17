@@ -3726,12 +3726,14 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 }
 
 @media (max-width: 760px) {
-  body {
-    overflow-x: clip;
+  body,
+  body[data-page='invoice'] {
+    overflow-x: hidden;
   }
 
   body[data-page='invoice'] {
-    overflow-x: clip;
+    font-size: 15px;
+    line-height: 1.55;
   }
 
   .nav {
@@ -3757,10 +3759,12 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   .nav-actions {
     order: 2;
     width: 100%;
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) minmax(0, 1fr);
     margin-left: 0;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: stretch;
+    flex-wrap: nowrap;
     gap: 8px;
     overflow: visible;
     padding-bottom: 0;
@@ -3768,19 +3772,20 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 
   .nav-actions .btn,
   .nav-actions .icon-btn {
+    width: 100%;
     min-height: 38px;
     font-size: 0.84rem;
     padding: 8px 12px;
   }
 
   .nav-actions .btn {
-    flex: 1 1 108px;
+    flex: 0 0 auto;
     min-width: 0;
     justify-content: center;
   }
 
   .nav-actions .icon-btn {
-    flex: 0 0 38px;
+    flex: 0 0 auto;
     width: 38px;
     height: 38px;
     padding: 0;
@@ -3788,21 +3793,24 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 
   .nav-links {
     order: 3;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     width: 100%;
-    justify-content: flex-start;
+    justify-content: stretch;
     overflow: visible;
-    flex-wrap: wrap;
-    gap: 8px;
+    flex-wrap: nowrap;
+    gap: 6px;
     padding-bottom: 0;
   }
 
   .nav-links a {
-    white-space: nowrap;
-    flex: 1 1 104px;
+    white-space: normal;
+    flex: 0 0 auto;
     min-width: 0;
     text-align: center;
-    padding: 8px 10px;
-    font-size: 0.86rem;
+    padding: 7px 8px;
+    font-size: 0.82rem;
+    line-height: 1.2;
   }
 
   .hero-actions .btn,
@@ -3844,6 +3852,11 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
     display: grid;
   }
 
+  .ig-sheet-head {
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
   .ig-logo-box {
     width: 100%;
     min-height: 108px;
@@ -3851,10 +3864,27 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 
   .ig-doc-title {
     width: 100%;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .ig-doc-title h1 {
+    font-size: clamp(1.75rem, 8.4vw, 2.2rem);
+    margin-bottom: 8px;
   }
 
   .ig-doc-number {
     width: 100%;
+    margin-left: 0;
+  }
+
+  body[data-page='invoice'] .ig-sheet input,
+  body[data-page='invoice'] .ig-sheet select,
+  body[data-page='invoice'] .ig-sheet textarea,
+  body[data-page='invoice'] .ig-settings-card select {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 0.92rem;
   }
 
   .ig-items-wrap {
@@ -3863,13 +3893,52 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   }
 
   .ig-items-table {
-    min-width: 620px;
+    min-width: 100%;
+    table-layout: fixed;
     margin-bottom: 8px;
   }
 
   .ig-items-table th,
   .ig-items-table td {
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .ig-items-table th {
+    padding: 8px 9px;
+    font-size: 0.8rem;
+  }
+
+  .ig-items-table td {
+    padding: 6px 4px;
+  }
+
+  .ig-items-table th:nth-child(1),
+  .ig-items-table td:nth-child(1) {
+    width: 40%;
+  }
+
+  .ig-items-table th:nth-child(2),
+  .ig-items-table td:nth-child(2) {
+    width: 18%;
+  }
+
+  .ig-items-table th:nth-child(3),
+  .ig-items-table td:nth-child(3) {
+    width: 22%;
+  }
+
+  .ig-items-table th:nth-child(4),
+  .ig-items-table td:nth-child(4) {
+    width: 20%;
+  }
+
+  .ig-rate-input {
+    min-width: 0;
+  }
+
+  .ig-item-amount {
+    font-size: 0.9rem;
   }
 
   .ig-bottom-grid {
@@ -3924,6 +3993,11 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 }
 
 @media (max-width: 480px) {
+  body[data-page='invoice'] {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
   .container {
     width: min(100% - 16px, var(--container));
   }
@@ -3953,11 +4027,11 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   }
 
   .nav-actions {
+    grid-template-columns: 36px minmax(0, 1fr) minmax(0, 1fr);
     gap: 6px;
   }
 
   .nav-actions .btn {
-    flex-basis: calc(50% - 22px);
     min-height: 36px;
     font-size: 0.82rem;
     padding: 7px 10px;
@@ -3974,8 +4048,7 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   }
 
   .nav-links a {
-    flex: 1 1 calc(33.333% - 6px);
-    min-width: 92px;
+    min-width: 0;
     font-size: 0.82rem;
     padding: 7px 8px;
   }
@@ -4004,7 +4077,7 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   }
 
   .ig-doc-title h1 {
-    font-size: clamp(1.9rem, 9.2vw, 2.35rem);
+    font-size: clamp(1.55rem, 7.2vw, 1.95rem);
     margin-bottom: 8px;
   }
 
@@ -4025,9 +4098,9 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   body[data-page='invoice'] .ig-sheet select,
   body[data-page='invoice'] .ig-sheet textarea,
   body[data-page='invoice'] .ig-settings-card select {
-    min-height: 38px;
-    padding: 8px 10px;
-    font-size: 0.94rem;
+    min-height: 35px;
+    padding: 7px 9px;
+    font-size: 0.9rem;
   }
 
   .ig-row {
@@ -4040,7 +4113,7 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   }
 
   .ig-items-table {
-    min-width: 540px;
+    min-width: 100%;
   }
 
   .ig-items-table th,
@@ -4106,17 +4179,16 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   }
 
   .nav-actions .btn {
-    flex-basis: calc(50% - 20px);
     font-size: 0.8rem;
   }
 
   .nav-links a {
-    min-width: 84px;
+    min-width: 0;
     font-size: 0.8rem;
   }
 
   .ig-items-table {
-    min-width: 500px;
+    min-width: 100%;
   }
 }
 
