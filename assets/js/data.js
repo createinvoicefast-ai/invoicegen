@@ -1,6 +1,6 @@
 window.APP_DATA = {
   site: {
-    name: 'CreateInvoiceFast',
+    name: 'Create Invoice Fast',
     shortName: 'CIF',
     domain: 'createinvoicefast.com',
     email: 'hello@createinvoicefast.com',

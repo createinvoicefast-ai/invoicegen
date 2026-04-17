@@ -182,7 +182,7 @@
     });
   };
 
-  const brandLabel = 'Invoice Generator';
+  const brandLabel = 'Create Invoice Fast';
 
   const normalizeHeaderChrome = () => {
     $$('.brand').forEach((brand) => {
@@ -1326,7 +1326,7 @@
         return;
       }
 
-      const supportAddress = 'support@invoice-generator.com';
+      const supportAddress = 'support@createinvoicefast.com';
       const subject = `Support request from ${name}`;
       const body = `${message}\n\nReply to: ${email}`;
 

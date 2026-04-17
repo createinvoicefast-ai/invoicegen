@@ -3307,8 +3307,9 @@ html[data-theme='dark'] body[data-page='invoice'] {
 }
 
 html[data-theme='dark'] body[data-page='invoice'] .topbar {
-  background: rgba(9, 19, 13, 0.88);
+  background: rgba(9, 19, 13, 0.96);
   border-bottom-color: #243a2d;
+  backdrop-filter: blur(14px);
   box-shadow: none;
 }
 
@@ -3723,6 +3724,10 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 }
 
 @media (max-width: 760px) {
+  body {
+    overflow-x: clip;
+  }
+
   body[data-page='invoice'] {
     overflow-x: clip;
   }
@@ -3730,8 +3735,9 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   .nav {
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
     min-height: auto;
+    padding: 8px 0;
   }
 
   .brand {
@@ -3739,34 +3745,83 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   }
 
   .brand span:last-child {
-    font-size: 0.92rem;
-    max-width: 170px;
+    font-size: 0.9rem;
+    max-width: 180px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .nav-actions {
+    order: 2;
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 8px;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .nav-actions .btn,
+  .nav-actions .icon-btn {
+    min-height: 38px;
+    font-size: 0.84rem;
+    padding: 8px 12px;
+  }
+
+  .nav-actions .btn {
+    flex: 1 1 108px;
+    min-width: 0;
+    justify-content: center;
+  }
+
+  .nav-actions .icon-btn {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    padding: 0;
   }
 
   .nav-links {
     order: 3;
     width: 100%;
     justify-content: flex-start;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 4px;
+    overflow: visible;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 0;
   }
 
   .nav-links a {
     white-space: nowrap;
+    flex: 1 1 104px;
+    min-width: 0;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 0.86rem;
   }
 
-  .nav-actions {
-    margin-left: auto;
-    gap: 8px;
+  .hero-actions .btn,
+  .inline-actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 
-  .nav-actions .btn,
-  .nav-actions .icon-btn {
-    min-height: 38px;
+  .ig-page-section {
+    padding: 24px 0 34px;
+  }
+
+  .ig-page-card,
+  .panel {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .data-table {
+    min-width: 700px;
+    font-size: 0.9rem;
   }
 
   body[data-page='invoice'] .ig-main {
@@ -3774,11 +3829,11 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   }
 
   .ig-stage {
-    width: min(100% - 14px, 100%);
+    width: min(100% - 16px, 100%);
   }
 
   .ig-sheet {
-    padding: 12px;
+    padding: 14px;
   }
 
   .ig-sheet-head,
@@ -3818,6 +3873,43 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   .ig-bottom-grid {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .ig-summary-col {
+    gap: 6px;
+  }
+
+  .ig-summary-row {
+    gap: 8px;
+    padding: 10px 0;
+  }
+
+  .ig-summary-input-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .ig-summary-input-row label {
+    min-width: 0;
+  }
+
+  .ig-summary-input-row .ig-inline-input,
+  .ig-summary-input-row .ig-money-input {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .ig-summary-input-row .ig-inline-input {
+    justify-content: flex-end;
+  }
+
+  .ig-summary-input-row .ig-inline-input input,
+  .ig-summary-input-row .ig-money-input input {
+    width: 100%;
+    min-width: 0;
   }
 
   .ig-summary-balance strong {

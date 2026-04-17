@@ -15,7 +15,7 @@
     discount: 0,
     notes: 'Thank you for your business. Payment is due within 14 days.',
     template: 'modern',
-    companyName: 'CreateInvoiceFast Studio',
+    companyName: 'Create Invoice Fast Studio',
     companyEmail: 'billing@example.com',
     companyAddress: '88 Market Street, Suite 400, San Francisco, CA',
     clientName: 'Acme Co.',
@@ -741,7 +741,7 @@
     populateInvoiceTemplatePicker();
     bindInvoiceForm();
     populateInvoiceHeader();
-    setupShareButtons('CreateInvoiceFast Invoice', 'Professional invoice generator');
+    setupShareButtons('Create Invoice Fast Invoice', 'Professional invoice generator');
   };
 
   const initHomePage = () => {
@@ -749,7 +749,7 @@
     populateFeatureCards();
     populateTemplateShowcase();
     populateFaq();
-    setupShareButtons('CreateInvoiceFast', 'Invoice generator, dashboards, blog, and billing templates');
+    setupShareButtons('Create Invoice Fast', 'Invoice generator, dashboards, blog, and billing templates');
   };
 
   const initBlogIndex = () => {
