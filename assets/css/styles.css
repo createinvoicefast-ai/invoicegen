@@ -51,6 +51,8 @@ html[data-theme='dark'] {
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -3918,6 +3920,203 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
 
   .ig-footer .footer-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: min(100% - 16px, var(--container));
+  }
+
+  .topbar {
+    backdrop-filter: blur(10px);
+  }
+
+  .nav {
+    gap: 7px;
+    padding: 7px 0;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+  }
+
+  .brand span:last-child {
+    font-size: 0.82rem;
+    max-width: 130px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .nav-actions .btn {
+    flex-basis: calc(50% - 22px);
+    min-height: 36px;
+    font-size: 0.82rem;
+    padding: 7px 10px;
+  }
+
+  .nav-actions .icon-btn {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-links {
+    gap: 6px;
+  }
+
+  .nav-links a {
+    flex: 1 1 calc(33.333% - 6px);
+    min-width: 92px;
+    font-size: 0.82rem;
+    padding: 7px 8px;
+  }
+
+  body[data-page='invoice'] .ig-main {
+    padding-top: 10px;
+  }
+
+  .ig-stage {
+    width: min(100% - 12px, 100%);
+  }
+
+  .ig-sheet {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .ig-sheet-head {
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .ig-logo-box {
+    min-height: 92px;
+    border-radius: 7px;
+  }
+
+  .ig-doc-title h1 {
+    font-size: clamp(1.9rem, 9.2vw, 2.35rem);
+    margin-bottom: 8px;
+  }
+
+  .ig-doc-number {
+    width: 100%;
+    border-radius: 7px;
+  }
+
+  .ig-doc-number span {
+    padding: 0 10px;
+  }
+
+  .ig-doc-number input {
+    padding: 8px 10px;
+  }
+
+  body[data-page='invoice'] .ig-sheet input,
+  body[data-page='invoice'] .ig-sheet select,
+  body[data-page='invoice'] .ig-sheet textarea,
+  body[data-page='invoice'] .ig-settings-card select {
+    min-height: 38px;
+    padding: 8px 10px;
+    font-size: 0.94rem;
+  }
+
+  .ig-row {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .ig-meta-grid {
+    gap: 7px;
+  }
+
+  .ig-items-table {
+    min-width: 540px;
+  }
+
+  .ig-items-table th,
+  .ig-items-table td {
+    font-size: 0.84rem;
+  }
+
+  .ig-items-table th {
+    padding: 8px 9px;
+  }
+
+  .ig-items-table td {
+    padding: 6px 5px;
+  }
+
+  .ig-inline-input {
+    width: 100%;
+  }
+
+  .ig-summary-row {
+    padding: 8px 0;
+  }
+
+  .ig-summary-total strong {
+    font-size: 1.2rem;
+  }
+
+  .ig-summary-balance {
+    font-size: 1.05rem;
+  }
+
+  .ig-summary-balance strong {
+    font-size: 1.3rem;
+  }
+
+  .ig-download-btn {
+    min-height: 46px;
+    font-size: 1rem;
+  }
+
+  .ig-settings-toggle {
+    padding: 12px;
+  }
+
+  .ig-settings-body {
+    padding: 0 10px 12px;
+  }
+
+  .ig-page-card,
+  .panel {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .ig-footer .footer-grid {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand span:last-child {
+    max-width: 110px;
+  }
+
+  .nav-actions .btn {
+    flex-basis: calc(50% - 20px);
+    font-size: 0.8rem;
+  }
+
+  .nav-links a {
+    min-width: 84px;
+    font-size: 0.8rem;
+  }
+
+  .ig-items-table {
+    min-width: 500px;
   }
 }
 
