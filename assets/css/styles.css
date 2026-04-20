@@ -3588,6 +3588,10 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   margin-bottom: 24px;
 }
 
+.ig-pdf-party-grid-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .ig-pdf-party-grid h2 {
   margin: 0 0 6px;
   color: #8b98ac;
@@ -3653,6 +3657,14 @@ html[data-theme='dark'] body[data-page='invoice'] .ig-summary-balance strong {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 250px;
   gap: 28px;
+}
+
+.ig-pdf-bottom-summary-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.ig-pdf-bottom-summary-only .ig-pdf-summary-col {
+  justify-self: end;
 }
 
 .ig-pdf-notes-col {

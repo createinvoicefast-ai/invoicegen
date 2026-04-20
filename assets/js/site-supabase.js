@@ -50,6 +50,41 @@
     };
   };
 
+  const legacySeedDraftValues = {
+    companyName: 'Create Invoice Fast Studio',
+    companyEmail: 'billing@example.com',
+    companyAddress: '88 Market Street, Suite 400, San Francisco, CA',
+    clientName: 'Acme Co.',
+    clientEmail: 'accounts@acme.com',
+    clientAddress: '1200 Mission Street, San Francisco, CA',
+    notes: 'Thank you for your business. Payment is due within 14 days.',
+    projectName: 'Brand system refresh'
+  };
+
+  const stripLegacySeedValues = (draft) => {
+    if (!draft || typeof draft !== 'object' || Array.isArray(draft)) {
+      return { draft: null, changed: false };
+    }
+
+    const matchingKeys = Object.entries(legacySeedDraftValues)
+      .filter(([field, sample]) => {
+        const value = draft[field];
+        return typeof value === 'string' && value.trim() === sample;
+      })
+      .map(([field]) => field);
+
+    if (matchingKeys.length < 4) {
+      return { draft, changed: false };
+    }
+
+    const nextDraft = { ...draft };
+    matchingKeys.forEach((field) => {
+      nextDraft[field] = '';
+    });
+
+    return { draft: nextDraft, changed: true };
+  };
+
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
@@ -266,7 +301,10 @@
   };
 
   const getDraft = () => {
-    const draft = readJSON(getDraftKey(), null);
+    const storedDraft = readJSON(getDraftKey(), null);
+    const { draft, changed } = stripLegacySeedValues(storedDraft);
+    if (changed) writeJSON(getDraftKey(), draft);
+
     const merged = draft ? { ...defaultDraft(), ...draft } : defaultDraft();
 
     if (!Array.isArray(merged.items) || !merged.items.length) {
@@ -357,21 +395,26 @@
     const totals = getInvoiceTotals(draft);
     const taxRate = Number(draft.taxRate || 0);
     const taxRateText = String(taxRate).replace(/\.0+$/, '').replace(/(\.\d*?)0+$/, '$1') || '0';
+    const sanitizedDraft = stripLegacySeedValues(draft).draft;
 
     const safeText = (value, fallback = '-') => {
       const clean = String(value ?? '').trim();
       return clean ? escapeHTML(clean).replaceAll('\n', '<br>') : fallback;
     };
 
-    const companyLines = [draft.companyName, draft.companyEmail, draft.companyAddress]
+    const companyLines = [sanitizedDraft.companyName, sanitizedDraft.companyEmail, sanitizedDraft.companyAddress]
       .map((entry) => String(entry || '').trim())
       .filter(Boolean)
       .map((entry) => escapeHTML(entry));
 
-    const billToLines = [draft.clientName, draft.clientEmail, draft.clientAddress]
+    const billToLines = [sanitizedDraft.clientName, sanitizedDraft.clientEmail, sanitizedDraft.clientAddress]
       .map((entry) => String(entry || '').trim())
       .filter(Boolean)
       .map((entry) => escapeHTML(entry));
+
+    const shipToText = String(sanitizedDraft.shipTo || '').trim();
+    const notesText = String(sanitizedDraft.notes || '').trim();
+    const termsText = String(sanitizedDraft.terms || '').trim();
 
     const items = Array.isArray(draft.items) && draft.items.length
       ? draft.items
@@ -399,9 +442,73 @@
       ? `<tr><td colspan="4" class="ig-pdf-overflow">${escapeHTML(String(items.length - maxPdfRows))} more item(s) not shown in this one-page PDF.</td></tr>`
       : '';
 
-    const logoSrc = typeof draft.logoDataUrl === 'string' && draft.logoDataUrl.startsWith('data:image/')
-      ? draft.logoDataUrl
+    const logoSrc = typeof sanitizedDraft.logoDataUrl === 'string' && sanitizedDraft.logoDataUrl.startsWith('data:image/')
+      ? sanitizedDraft.logoDataUrl
       : '';
+
+    const brandBlocks = [];
+    if (logoSrc) {
+      brandBlocks.push(`
+        <div class="ig-pdf-logo">
+          <img src="${logoSrc}" alt="Company logo">
+        </div>
+      `);
+    }
+    if (companyLines.length) {
+      brandBlocks.push(`<p class="ig-pdf-company">${companyLines.join('<br>')}</p>`);
+    }
+
+    const brandColumnMarkup = brandBlocks.length
+      ? `<div class="ig-pdf-brand-col">${brandBlocks.join('')}</div>`
+      : '';
+
+    const partySections = [];
+    if (billToLines.length) {
+      partySections.push(`
+        <div>
+          <h2>BILL TO</h2>
+          <p>${billToLines.join('<br>')}</p>
+        </div>
+      `);
+    }
+    if (shipToText) {
+      partySections.push(`
+        <div>
+          <h2>SHIP TO</h2>
+          <p>${safeText(shipToText)}</p>
+        </div>
+      `);
+    }
+
+    const partyGridMarkup = partySections.length
+      ? `<section class="ig-pdf-party-grid ig-pdf-party-grid-${partySections.length === 1 ? 'single' : 'double'}">${partySections.join('')}</section>`
+      : '';
+
+    const notesBlocks = [];
+    if (notesText) {
+      notesBlocks.push(`
+        <div class="ig-pdf-note-block">
+          <h3>Notes</h3>
+          <p>${safeText(notesText)}</p>
+        </div>
+      `);
+    }
+    if (termsText) {
+      notesBlocks.push(`
+        <div class="ig-pdf-note-block">
+          <h3>Terms</h3>
+          <p>${safeText(termsText)}</p>
+        </div>
+      `);
+    }
+
+    const notesColumnMarkup = notesBlocks.length
+      ? `<div class="ig-pdf-notes-col">${notesBlocks.join('')}</div>`
+      : '';
+
+    const bottomSectionClass = notesBlocks.length
+      ? 'ig-pdf-bottom'
+      : 'ig-pdf-bottom ig-pdf-bottom-summary-only';
 
     const wrapper = document.createElement('div');
     wrapper.className = 'ig-pdf-capture-wrap';
@@ -411,14 +518,7 @@
     page.className = 'ig-pdf-page';
     page.innerHTML = `
       <header class="ig-pdf-head">
-        <div class="ig-pdf-brand-col">
-          <div class="ig-pdf-logo">
-            ${logoSrc
-              ? `<img src="${logoSrc}" alt="Company logo">`
-              : '<span>+ Add Logo</span>'}
-          </div>
-          <p class="ig-pdf-company">${companyLines.join('<br>') || '&nbsp;'}</p>
-        </div>
+        ${brandColumnMarkup}
         <div class="ig-pdf-doc-col">
           <h1>INVOICE</h1>
           <p class="ig-pdf-doc-number"># ${safeText(draft.invoiceNumber, '1')}</p>
@@ -431,16 +531,7 @@
         </div>
       </header>
 
-      <section class="ig-pdf-party-grid">
-        <div>
-          <h2>BILL TO</h2>
-          <p>${billToLines.join('<br>') || '&nbsp;'}</p>
-        </div>
-        <div>
-          <h2>SHIP TO</h2>
-          <p>${safeText(draft.shipTo, '&nbsp;')}</p>
-        </div>
-      </section>
+      ${partyGridMarkup}
 
       <table class="ig-pdf-table" aria-label="Invoice line items">
         <thead>
@@ -454,17 +545,8 @@
         <tbody>${rowsMarkup}${overflowRow}</tbody>
       </table>
 
-      <section class="ig-pdf-bottom">
-        <div class="ig-pdf-notes-col">
-          <div class="ig-pdf-note-block">
-            <h3>Notes</h3>
-            <p>${safeText(draft.notes, '&nbsp;')}</p>
-          </div>
-          <div class="ig-pdf-note-block">
-            <h3>Terms</h3>
-            <p>${safeText(draft.terms, '&nbsp;')}</p>
-          </div>
-        </div>
+      <section class="${bottomSectionClass}">
+        ${notesColumnMarkup}
         <div class="ig-pdf-summary-col">
           <div class="ig-pdf-summary-row"><span>Subtotal</span><strong>${money(totals.subtotal, draft.currency)}</strong></div>
           <div class="ig-pdf-summary-row"><span>Discount</span><strong>- ${money(totals.discount, draft.currency)}</strong></div>
@@ -710,7 +792,7 @@
     next.shipping = Number(next.shipping || 0);
     next.amountPaid = Number(next.amountPaid || 0);
 
-    return next;
+    return stripLegacySeedValues(next).draft;
   };
 
   const renderCurrencySymbols = (draft) => {
@@ -961,6 +1043,7 @@
     if (!form) return;
 
     let draft = initialDraft ? { ...defaultDraft(), ...initialDraft } : getDraft();
+    draft = stripLegacySeedValues(draft).draft;
 
     if (!Array.isArray(draft.items) || !draft.items.length) {
       draft.items = [{ description: '', quantity: 1, rate: 0 }];
